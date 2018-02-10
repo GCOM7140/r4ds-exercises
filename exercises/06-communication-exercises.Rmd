@@ -1,0 +1,27 @@
+---
+title: "Communication Exercises"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, out.width = '50%')
+library(tidyverse)
+library(gtrendsR)
+
+# Chapter 28 Graphics for Communication
+# Dataset used: ???
+
+# Work on mpg data, iris, diamonds?
+# Recreate gtrends plot using ggplot2?
+
+# jitter points, add regression line + equation
+# time series with annotations?
+
+# bubble? 
+# ordered bar chart?
+# "slope chart"? A vs. B study
+# pie chart!
+
+```
+

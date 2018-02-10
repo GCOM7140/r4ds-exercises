@@ -1,0 +1,46 @@
+Data Transformation Exercises
+================
+
+The following 5 questions are based on concepts covered in Chapters 4-6 in R4DS and can be answered using the `flights` dataset from the `nycflights13` package. Start by loading the `tidyverse` and `nycflights13` packages.
+
+``` r
+library(tidyverse)
+library(nycflights13)
+```
+
+It is highly recommended to run `?flights` from the R console to first familiarize yourself with the dataset.
+
+------------------------------------------------------------------------
+
+**Question 1**: The following questions ask you to find the number of flights that meet certain criteria. Hint: Count the number of rows using `nrow()` after you have filtered the dataset. A review of different comparison operators is presented in [5.2.2](http://r4ds.had.co.nz/transform.html#logical-operators).
+*This question is based on [5.2.4.\#1](http://r4ds.had.co.nz/transform.html#exercises-7) and grows your ability to use [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter).*
+
+-   How many flights flew into `ORD`
+-   How many flights flew out of `ORD`
+-   How many flights are less than 100 miles?
+-   How many flights were destined for Houston airports ('IAH' or 'HOU'), but did not originate out of 'JFK'? Hint: Use the `%in%` operator. Also, use the exclamation mark (`!`), which means NOT.
+
+------------------------------------------------------------------------
+
+**Question 2**: How many flights were "ghost flights"? A "ghost flight" is defined as a flight that departed, but never arrived (has missing `arr_time`).
+*This question is based on [5.2.4.\#3](http://r4ds.had.co.nz/transform.html#exercises-7) and grows your knowledge on how [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) treats `NA` values.*
+
+------------------------------------------------------------------------
+
+**Question 3**: How are missing values treated by `arrange()`? How could you sort all rows with a missing `arr_time` to the top of the dataset?
+*This question is based on [5.3.1.\#1](http://r4ds.had.co.nz/transform.html#exercises-8) and test how [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) treats `NA` values.*
+
+------------------------------------------------------------------------
+
+**Question 4**: What do you observe after running the code below? How does this behavior reflect how select helpers deal with upper and lowercase matching by default? How can you change that default?
+
+``` r
+select(flights, contains("TIME"))`
+```
+
+*This question is based on [5.4.1.\#4](http://r4ds.had.co.nz/transform.html#exercises-9) and grows your ability to use [`select()`](http://r4ds.had.co.nz/transform.html#select-columns-with-select).*
+
+------------------------------------------------------------------------
+
+**Question 5**: For each destination, compute the total minutes of delay and then determine what proportion of total delay minutes each destination represents. What are the Top 3 destinations by proportion of total and what proportions do each of the Top 3 destinations represent? Hint: Use `summarize()` and `arrange()` to quickly find the Top 3. The `summarize()` command is reviewed in [5.6](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) and `arrange()` is reviewed in [5.3](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange).
+*This question is based on [5.7.1.\#4](http://r4ds.had.co.nz/transform.html#exercises-12) and grows your ability to calculate a per group percentage of total [(link)](http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters).*
