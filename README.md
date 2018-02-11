@@ -35,3 +35,14 @@ Solutions:
  3. [Exploratory Data Analysis](https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/03-exploratory-data-analysis-solutions.md)
  4. [Data Wrangling](https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/04-data-wrangling-solutions.md)
  5. [Reproducibility](https://raw.githubusercontent.com/GCOM7140/r4ds-exercises/master/solutions/05-reproducibility-solutions.Rmd)
+
+### Additional Resources
+If you would like to review additional material while learning R4DS there are two 
+great resources available: 
+
+1. Jesse Maegan [@kierisi](https://twitter.com/kierisi) is systematically working 
+through R4DS on her [blog](https://medium.com/@kierisi/r4ds-learning-to-learn-b22ffa7419f8). 
+You can follow along with her as she provides more in-depth discussion into some of the R4DS topics.
+
+2. Professor Jeffrey Arnold has provided a very comprehensive set of solutions to R4DS that 
+is available at https://jrnold.github.io/r4ds-exercise-solutions/index.html
