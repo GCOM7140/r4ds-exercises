@@ -1,5 +1,7 @@
 # r4ds-exercises
-A collection of exercises and solutions based on [R4DS](http://r4ds.had.co.nz/index.html). 
+A collection of exercises and solutions based on the book 
+[R for Data Science](http://r4ds.had.co.nz/index.html), also known as R4DS, by 
+Hadley Wickham and Garrett Grolemund.
 
 ## Table of Contents
  - [Installing the Required Packages](#installing-the-required-packages)
