@@ -1,0 +1,36 @@
+---
+title: "Reproducibility Solutions"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## cars Summary
+
+The data give the speed of cars and the distances taken to stop. Note that the **data were recorded in the 1920s**.
+
+```{r cars}
+summary(cars)
+```
+
+## Speed/Distance Plot
+
+As expected when plotting the relationship between speed and stopping distance, 
+we see a strong correlation that a higher speed requires a longer stopping distance. 
+Every 5 mph requires an additional 20 ft to stop.
+
+```{r cars-plot, echo=FALSE}
+ggplot(cars) + 
+  geom_point(mapping=aes(x=speed, y=dist))
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r warning-suppression, warning=FALSE, echo=FALSE}
+warning("Testing warning suppression")
+```
