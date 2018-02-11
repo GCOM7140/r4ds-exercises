@@ -11,7 +11,7 @@ It is highly recommended to run `?diamonds` from the R console to first familiar
 
 ------------------------------------------------------------------------
 
-**Question 1**: Plot the distribution of price. Describe the distribution. Hint: You can also use `summary(diamonds$price)` to get some hard numbers around the distribution.
+**Question 1**: Plot the distribution of price. Describe the distribution. Hint: You can also use `summary(diamonds$price)` to view a quantitative assessment of the distribution.
 *This question is [7.3.4.\#2](http://r4ds.had.co.nz/exploratory-data-analysis.html#exercises-13) and grows your ability to plot a histogram to view a distribution [(link)](http://r4ds.had.co.nz/exploratory-data-analysis.html#visualising-distributions).*
 
 ------------------------------------------------------------------------

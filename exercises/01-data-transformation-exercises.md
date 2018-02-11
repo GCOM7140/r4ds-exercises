@@ -23,7 +23,7 @@ It is highly recommended to run `?flights` from the R console to first familiari
 ------------------------------------------------------------------------
 
 **Question 2**: How many flights were "ghost flights"? A "ghost flight" is defined as a flight that departed, but never arrived (has missing `arr_time`).
-*This question is based on [5.2.4.\#3](http://r4ds.had.co.nz/transform.html#exercises-7) and grows your knowledge on how [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) treats `NA` values.*
+*This question is based on [5.2.4.\#3](http://r4ds.had.co.nz/transform.html#exercises-7) and grows your knowledge of how [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) treats `NA` values.*
 
 ------------------------------------------------------------------------
 

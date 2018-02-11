@@ -1,5 +1,5 @@
 ---
-title: "Data Transformation Exercises"
+title: "Data Transformation Solutions"
 output: github_document
 ---
 
@@ -7,17 +7,11 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The following 5 questions are based on concepts covered in Chapters 4-6 in R4DS 
-and can be answered using the `flights` dataset from the `nycflights13` package. 
-Start by loading the `tidyverse` and `nycflights13` packages.
-
 ```{r load-packages, warning=FALSE, message=FALSE}
+# required packages
 library(tidyverse)
 library(nycflights13)
 ```
-
-It is highly recommended to run `?flights` from the R console to first familiarize 
-yourself with the dataset.
 
 --- 
 
@@ -34,12 +28,36 @@ the dataset. A review of different comparison operators is presented in [5.2.2](
  originate out of 'JFK'? Hint: Use the `%in%` operator. Also, use the 
  exclamation mark  (`!`), which means NOT.
 
+**Answer:**
+
+ - 17,283 flights - `flights %>% filter(dest == 'ORD') %>% nrow()`
+ 
+ - 0 flights - `flights %>% filter(origin == 'ORD') %>% nrow()`
+ 
+Note: This is a trick question. You can confirm the correct answer is zero by 
+running `?flights`. The dataset description states: "On-time data for all flights 
+that departed NYC (i.e. JFK, LGA or EWR)". 'ORD' is the airport code for Chicago 
+O'Hare, so zero flights in this dataset originated from O'Hare.
+
+ - 1,633 flights - `flights %>% filter(distance < 100) %>% nrow()`
+ 
+ - 8,325 flights - `flights %>% filter(dest %in% c('IAH', 'HOU'), origin != 'JFK') %>% nrow()`
+
 ---
 
 **Question 2**:
 How many flights were "ghost flights"? A "ghost flight" is defined as a flight 
-that departed, but never arrived (has missing `arr_time`).  
+that departed, but has missing `arr_time` (never arrived?!).  
 *This question is based on [5.2.4.#3](http://r4ds.had.co.nz/transform.html#exercises-7) and grows your knowledge of how [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) treats `NA` values.*
+
+**Answer:**  
+458 flights
+
+```{r Q2}
+flights %>% 
+  filter(is.na(arr_time), !is.na(dep_time)) %>% 
+  nrow()
+```
 
 ---
 
@@ -47,6 +65,23 @@ that departed, but never arrived (has missing `arr_time`).
 How are missing values treated by `arrange()`? How could you sort all rows with 
 a missing `arr_time` to the top of the dataset?  
 *This question is based on [5.3.1.#1](http://r4ds.had.co.nz/transform.html#exercises-8) and test how [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) treats `NA` values.*
+
+**Answer**:
+With the `arrange()` function all non-missing values are sorted in ascending or 
+descending fashion, and then the rows with missing values are displayed last. 
+
+Here is the code to sort observations in descending order with the missing 
+values at the top:
+
+```{r Q3}
+flights %>% 
+  arrange(desc(is.na(arr_time)), desc(arr_time))
+```
+
+Note: `is.na(arr_time)` converts `arr_time` into `TRUE/FALSE` values. When sorting 
+`TRUE/FALSE` values in ascending order the `FALSE`s are listed first, so we must sort 
+those in descending order to make the missing rows where `is.na(arr_time)` is 
+`TRUE` rise to the top of the dataset.
 
 ---
 
@@ -61,14 +96,38 @@ select(flights, contains("TIME"))`
 
 *This question is based on [5.4.1.#4](http://r4ds.had.co.nz/transform.html#exercises-9) and grows your ability to use [`select()`](http://r4ds.had.co.nz/transform.html#select-columns-with-select).*
 
+**Answer**:
+The current code fails to select any column names because the `contains()` function 
+is case-sensitive by default. You can set the `ignore.case` argument to `TRUE` to 
+find any match of "TIME" regardless of the case, like this:
+
+```{r Q4a, eval=FALSE}
+select(flights, contains("TIME", ignore.case = TRUE))
+```
+
 ---
 
 **Question 5**:
 For each destination, compute the total minutes of delay and then determine what 
-proportion of total delay minutes each destination represents. What are the Top 3 
-destinations by proportion of total and what proportions do each of the Top 3 
+proportion of total delay minutes each destination represents. What are the top 3 
+destinations by proportion of total and what proportions do each of the top 3 
 destinations represent? Hint: Use `summarize()` and `arrange()` to quickly find 
-the Top 3. The `summarize()` command is reviewed in 
+the top 3. The `summarize()` command is reviewed in 
 [5.6](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) and 
 `arrange()` is reviewed in [5.3](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange).  
 *This question is based on [5.7.1.#4](http://r4ds.had.co.nz/transform.html#exercises-12) and grows your ability to calculate a per group percentage of total [(link)](http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters).*
+
+**Answer**:
+ 
+ 1. ORD = 5.4%
+ 2. ATL = 5.0%
+ 3. SFO = 3.9%
+
+```{r Q5}
+flights %>%
+  filter(dep_delay > 0) %>%
+  group_by(dest) %>%
+  summarize(delay_mins = sum(dep_delay)) %>%
+  mutate(delay_pct_of_total = delay_mins / sum(delay_mins)) %>%
+  arrange(-delay_pct_of_total)
+```
