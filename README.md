@@ -20,5 +20,5 @@ After working through the exercises look at the solutions provided in the [solut
 Compare your work with what is provided. There are usually multiple ways to perform 
 the same operation in R, so do not be concerned if your code does not match exactly. 
 Focus on ensuring that your output and answer appears the same. Here is a direct 
-link to the solutions to first set of exercises: 
+link to the solutions to first set of exercises: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/01-data-transformation-solutions.md
 
