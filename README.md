@@ -1,7 +1,13 @@
 # r4ds-exercises
 A collection of exercises and solutions based on [R4DS](http://r4ds.had.co.nz/index.html). 
 
-### Step 1: Installing the Required Packages
+## Table of Contents
+ - [Installing the Required Packages](#installing-the-required-packages)
+ - [Working on the Exercises](#working-on-the-exercises)
+ - [Reviewing the Solutions](#reviewing-the-solutions)
+ - [Additional Resources](#additional-resources)
+
+### Installing the Required Packages
 All of the exercises can be solved using the `tidyverse` and `nycflights13` packages. 
 You can install those packages with the following commands: 
 
@@ -10,7 +16,7 @@ install.packages('tidyverse')
 install.packages('nycflights13')
 ```
 
-### Step 2: Working on the Exercises
+### Working on the Exercises
 Below are links to the exercises. You can also find them by navigating to the [exercises](https://github.com/GCOM7140/r4ds-exercises/tree/master/exercises) 
 folder of this repository and click on the files ending in `.md` to view. 
 
@@ -22,7 +28,7 @@ Exercises:
  4. [Data Wrangling](https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/04-data-wrangling-exercises.md)
  5. [Reproducibility](https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/05-reproducibility-exercises.md)
 
-### Step 3: Reviewing the Solutions
+### Reviewing the Solutions
 After working through the exercises look at the solutions provided in the [solutions](https://github.com/GCOM7140/r4ds-exercises/tree/master/solutions) folder. 
 Compare your work with what is provided. There are usually multiple ways to perform 
 the same operation in R, so do not be concerned if your code does not match exactly. 
