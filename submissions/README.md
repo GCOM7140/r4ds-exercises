@@ -1,7 +1,7 @@
 # R4DS Submissions
-Submit your answers to the [R4DS Exercise Sets][exercises] by adding your work 
-to this folder. Please use the following file-name convention for your 
-submissions: 
+Add your answers to the [R4DS Exercises][exercises] to this folder for 
+submission purposes. Please use the following file-name convention for your 
+submissions:  
 
 - 01-r4ds-data-transformation-lastname-firstname (.R or .Rmd/.md)
 - 02-r4ds-data-visualization-lastname-firstname (.R or .Rmd/.md)
