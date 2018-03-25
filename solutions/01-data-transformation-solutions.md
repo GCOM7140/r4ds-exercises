@@ -1,4 +1,4 @@
-Data Transformation Exercises
+Data Transformation Solutions
 ================
 
 The following five questions are based on concepts covered in Chapters 4-6 in R4DS and can be answered using the `flights` dataset from the `nycflights13` package. Start by loading the `tidyverse` and `nycflights13` packages.
@@ -138,7 +138,7 @@ select(flights, contains("TIME", ignore.case = TRUE))
 
 **Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of delay. Then determine what proportion of the total delay minutes each destination represents. What three destinations top the list?
 
-**Hint:** Use [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) to find the destinations greater than or equal to 2000 miles away with positive `dep_delay` values, then \[`group_by()`\]\[group\_by\] `dest`, then [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) to find total delay minutes by destination, then \[`mutate()`\]\[mutate\] to find proportions, and finally [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) to find the top three.
+**Hint:** Use [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) to find the destinations greater than or equal to 2000 miles away with positive `dep_delay` values, then [`group_by()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) `dest`, then [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) to find total delay minutes by destination, then \[`mutate()`\]\[mutate\] to find proportions, and finally [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) to find the top three.
 
 This question is based on [5.7.1\#4](http://r4ds.had.co.nz/transform.html#exercises-12) and designed to strengthen your ability to calculate a per-group proportion of a total. See [here](http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters).
 

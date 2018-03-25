@@ -1,5 +1,5 @@
 ---
-title: "Data Transformation Exercises"
+title: "Data Transformation Solutions"
 output: github_document
 ---
 
@@ -155,7 +155,7 @@ destination represents. What three destinations top the list?
 
 **Hint:** Use [`filter()`][filter] to find the destinations greater than or 
 equal to 2000 miles away with positive `dep_delay` values, then 
-[`group_by()`][group_by] `dest`, then [`summarize()`][summarize] to find total 
+[`group_by()`][summarize] `dest`, then [`summarize()`][summarize] to find total 
 delay minutes by destination, then [`mutate()`][mutate] to find proportions, and
 finally [`arrange()`][arrange] to find the top three. 
 
