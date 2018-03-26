@@ -76,10 +76,9 @@ your ability to use the `dplyr` verb [`select()`][select].
 
 **Question 5**:
 For each destination greater than or equal to 2000 miles away, compute total 
-minutes of departure delay. Also determine what proportion of these total 
-minutes of departure delay the destinations represent. What are the top-three 
-destinations by proportion of total departure delay, and what proportions do
-each of the top-three destinations represent? 
+minutes of departure delay. Then determine what proportion of total 
+departure-delay minutes each destination represents. What three destinations top 
+the list? 
 
 **Hint:** Use [`summarize()`][summarize] and [`arrange()`][arrange] to find the 
 top three. 
