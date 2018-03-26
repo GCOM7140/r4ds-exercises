@@ -47,7 +47,7 @@ This question is based on [5.4.1\#4](http://r4ds.had.co.nz/transform.html#exerci
 
 ------------------------------------------------------------------------
 
-**Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of delay. Also determine what proportion of these total minutes of delay the destinations represent. What are the top-three destinations by proportion of total, and what proportions do each of the top-three destinations represent?
+**Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of departure delay. Also determine what proportion of these total minutes of departure delay the destinations represent. What are the top-three destinations by proportion of total departure delay, and what proportions do each of the top-three destinations represent?
 
 **Hint:** Use [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) and [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) to find the top three.
 
