@@ -80,12 +80,14 @@ minutes of departure delay. Then determine what proportion of total
 departure-delay minutes each destination represents. What three destinations top 
 the list? 
 
-**Hint:** Use [`summarize()`][summarize] and [`arrange()`][arrange] to find the 
-top three. 
+**Hint:** Use [`filter()`][filter] to find the destinations greater than or 
+equal to 2000 miles away with positive `dep_delay` values, then 
+[`group_by()`][summarize] `dest`, then [`summarize()`][summarize] to find total 
+departure delay minutes by destination, then [`mutate()`][mutate] to find 
+proportions, and finally [`arrange()`][arrange] to find the top three. 
 
 This question is based on [5.7.1#4][5.7.1 Exercises] and designed to strengthen 
-your ability to calculate a per-group percentage of a total. See 
-[here][grouped mutates].
+your ability to calculate [per-group proportions of totals][grouped mutates].
 
 
 [5.2.2]: http://r4ds.had.co.nz/transform.html#logical-operators
@@ -96,5 +98,6 @@ your ability to calculate a per-group percentage of a total. See
 [filter]: http://r4ds.had.co.nz/transform.html#filter-rows-with-filter
 [arrange]: http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange
 [select]: http://r4ds.had.co.nz/transform.html#select-columns-with-select
+[mutate]: http://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate
 [grouped mutates]: http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters
 [summarize]: http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise

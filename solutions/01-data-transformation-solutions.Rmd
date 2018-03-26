@@ -150,18 +150,18 @@ select(flights, contains("TIME", ignore.case = TRUE))
 
 **Question 5**:
 For each destination greater than or equal to 2000 miles away, compute total 
-minutes of delay. Then determine what proportion of the total delay minutes each 
-destination represents. What three destinations top the list? 
+minutes of departure delay. Then determine what proportion of total 
+departure-delay minutes each destination represents. What three destinations top 
+the list? 
 
 **Hint:** Use [`filter()`][filter] to find the destinations greater than or 
 equal to 2000 miles away with positive `dep_delay` values, then 
 [`group_by()`][summarize] `dest`, then [`summarize()`][summarize] to find total 
-delay minutes by destination, then [`mutate()`][mutate] to find proportions, and
-finally [`arrange()`][arrange] to find the top three. 
+departure delay minutes by destination, then [`mutate()`][mutate] to find 
+proportions, and finally [`arrange()`][arrange] to find the top three. 
 
 This question is based on [5.7.1#4][5.7.1 Exercises] and designed to strengthen 
-your ability to calculate a per-group proportion of a total. See 
-[here][grouped mutates].
+your ability to calculate [per-group proportions of totals][grouped mutates].
 
 **Answer**:
 
@@ -169,9 +169,9 @@ your ability to calculate a per-group proportion of a total. See
 flights %>%
   filter(distance >= 2000, dep_delay > 0) %>%
   group_by(dest) %>%
-  summarize(delay_mins = sum(dep_delay)) %>%
-  mutate(delay_pct_of_total = delay_mins / sum(delay_mins)) %>%
-  arrange(-delay_pct_of_total) %>% 
+  summarize(dep_delay_mins = sum(dep_delay)) %>%
+  mutate(dep_delay_pct_of_total = dep_delay_mins / sum(dep_delay_mins)) %>%
+  arrange(-dep_delay_pct_of_total) %>% 
   head(3)
 ```
 
@@ -183,5 +183,6 @@ flights %>%
 [filter]: http://r4ds.had.co.nz/transform.html#filter-rows-with-filter
 [arrange]: http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange
 [select]: http://r4ds.had.co.nz/transform.html#select-columns-with-select
+[mutate]: http://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate
 [grouped mutates]: http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters
 [summarize]: http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise

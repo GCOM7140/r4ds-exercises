@@ -136,11 +136,11 @@ select(flights, contains("TIME", ignore.case = TRUE))
 
 ------------------------------------------------------------------------
 
-**Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of delay. Then determine what proportion of the total delay minutes each destination represents. What three destinations top the list?
+**Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of departure delay. Then determine what proportion of total departure-delay minutes each destination represents. What three destinations top the list?
 
-**Hint:** Use [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) to find the destinations greater than or equal to 2000 miles away with positive `dep_delay` values, then [`group_by()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) `dest`, then [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) to find total delay minutes by destination, then \[`mutate()`\]\[mutate\] to find proportions, and finally [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) to find the top three.
+**Hint:** Use [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) to find the destinations greater than or equal to 2000 miles away with positive `dep_delay` values, then [`group_by()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) `dest`, then [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) to find total departure delay minutes by destination, then [`mutate()`](http://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) to find proportions, and finally [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) to find the top three.
 
-This question is based on [5.7.1\#4](http://r4ds.had.co.nz/transform.html#exercises-12) and designed to strengthen your ability to calculate a per-group proportion of a total. See [here](http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters).
+This question is based on [5.7.1\#4](http://r4ds.had.co.nz/transform.html#exercises-12) and designed to strengthen your ability to calculate [per-group proportions of totals](http://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters).
 
 **Answer**:
 
@@ -148,15 +148,15 @@ This question is based on [5.7.1\#4](http://r4ds.had.co.nz/transform.html#exerci
 flights %>%
   filter(distance >= 2000, dep_delay > 0) %>%
   group_by(dest) %>%
-  summarize(delay_mins = sum(dep_delay)) %>%
-  mutate(delay_pct_of_total = delay_mins / sum(delay_mins)) %>%
-  arrange(-delay_pct_of_total) %>% 
+  summarize(dep_delay_mins = sum(dep_delay)) %>%
+  mutate(dep_delay_pct_of_total = dep_delay_mins / sum(dep_delay_mins)) %>%
+  arrange(-dep_delay_pct_of_total) %>% 
   head(3)
 ```
 
     ## # A tibble: 3 x 3
-    ##   dest  delay_mins delay_pct_of_total
-    ##   <chr>      <dbl>              <dbl>
-    ## 1 SFO      197238.              0.296
-    ## 2 LAX      185631.              0.278
-    ## 3 LAS       70351.              0.105
+    ##   dest  dep_delay_mins dep_delay_pct_of_total
+    ##   <chr>          <dbl>                  <dbl>
+    ## 1 SFO          197238.                  0.296
+    ## 2 LAX          185631.                  0.278
+    ## 3 LAS           70351.                  0.105
