@@ -150,9 +150,9 @@ select(flights, contains("TIME", ignore.case = TRUE))
 
 **Question 5**:
 For each destination greater than or equal to 2000 miles away, compute total 
-minutes of departure delay. Then determine what proportion of total 
-departure-delay minutes each destination represents. What three destinations top 
-the list? 
+minutes of departure delay. Then determine what proportion of 
+total-departure-delay minutes each destination represents. What three 
+destinations top the list? 
 
 **Hint:** Use [`filter()`][filter] to find the destinations greater than or 
 equal to 2000 miles away with positive `dep_delay` values, then 

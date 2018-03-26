@@ -47,7 +47,7 @@ This question is based on [5.4.1\#4](http://r4ds.had.co.nz/transform.html#exerci
 
 ------------------------------------------------------------------------
 
-**Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of departure delay. Then determine what proportion of total departure-delay minutes each destination represents. What three destinations top the list?
+**Question 5**: For each destination greater than or equal to 2000 miles away, compute total minutes of departure delay. Then determine what proportion of total-departure-delay minutes each destination represents. What three destinations top the list?
 
 **Hint:** Use [`filter()`](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) to find the destinations greater than or equal to 2000 miles away with positive `dep_delay` values, then [`group_by()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) `dest`, then [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) to find total departure delay minutes by destination, then [`mutate()`](http://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) to find proportions, and finally [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) to find the top three.
 
