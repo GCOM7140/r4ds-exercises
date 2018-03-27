@@ -30,4 +30,32 @@ flights %>%
         origin != "JFK"
   ) %>%
   nrow()
-#   
+# 5737 flights destined for LA area that did not originate from JFK
+
+# Question 2
+# How many flights were "ghost flights"? 
+flights %>%
+  filter(is.na(arr_time), !is.na(dep_time)) %>%
+  nrow()
+# 458 flights are ghost flihgts
+
+# Question 3
+# How does arrange() treat missing values? How could you sort all rows with a missing arr_time to the top of the dataset?
+flights %>%
+  arrange(desc(is.na(arr_time)))
+
+# Question 4
+# What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you change that default?
+select(flights, contains("TIME", ignore.case = TRUE))
+# The first line of code does not follow the correct syntax for the contains () function. You must add the ignore.case arguement. 
+
+# Question 5
+# For each destination greater than or equal to 2000 miles away, compute total minutes of departure delay. Then determine what proportion of total-departure-delay minutes each destination represents. What three destinations top the list?
+flights %>%
+  filter(distance >= 2000, dep_delay > 0) %>%
+  group_by(dest) %>%
+  summarize(dep_delay_mins = sum(dep_delay)) %>%
+  mutate(dep_delay_pct_of_total = dep_delay_mins / sum(dep_delay_mins)) %>%
+  arrange(-dep_delay_pct_of_total) %>%
+  head(3)
+# SFO, LAX, and LAS have the highest proprotions of departure delay. 
