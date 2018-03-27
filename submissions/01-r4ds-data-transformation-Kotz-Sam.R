@@ -15,8 +15,12 @@ nrow(filter(flights, origin == "LAX"))
 nrow(filter(flights, distance >= "2000"))
 
 #d doesnt work, why? something to do with Tibble?
-unlist(flights[,"dest"])
-nrow(filter(flights, dest == "LAX"| "ONT"))
+flights %>% 
+  filter(
+    dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB"), 
+    origin != "JFK"
+  ) %>% 
+  nrow()
 
 #2 
 nrow(filter(flights, is.na(arr_time)))
@@ -58,17 +62,42 @@ transaction_data$regular_price<- mutate(transaction_data, (sales_value + retail_
 transaction_data$loyalty_price<- mutate(transaction_data, (loyalty_price = (sales_value + coupon_match_disc) / quantity))
 transaction_data$coupon_price<- mutate(transaction_data, ((sales_value - coupon_disc) / quantity))
 
-#3 odd error message, can't figure out why
-b <- filter(transaction_data, regular_price <= 1)
+#3 
+transaction_data %>% 
+  filter(regular_price <= 1) %>% 
+  select(product_id) %>% 
+  n_distinct()
 
+transaction_data %>% 
+  filter(loyalty_price <= 1) %>% 
+  select(product_id) %>% 
+  n_distinct()
+
+transaction_data %>% 
+  filter(coupon_price <= 1) %>% 
+  select(product_id) %>% 
+  n_distinct()
 #4
-d<-group_by(transaction_data, basket_id)
-summarize(d)
-mean(basket_value > 10)
+transaction_data %>%
+  group_by(basket_id) %>%
+  summarize(basket_value = sum(sales_value)) %>%
+  ungroup() %>%
+  summarize(proportion_over_10 = mean(basket_value > 10))
 
 #5
-transaction_data$pct_loyalty_disc<- mutate(transaction_data, ( 1 - (loyalty_price / regular_price)))
-?group_by
-c<-group_by(transaction_data, store_id)
-(filter(c, sales_value >= 10000))
-
+transaction_data %>%
+  filter(
+    is.finite(regular_price), 
+    is.finite(loyalty_price), 
+    regular_price > 0
+  ) %>%
+  mutate(
+    pct_loyalty_disc     = 1 - (loyalty_price / regular_price)
+  ) %>%
+  group_by(store_id) %>%
+  summarize(
+    total_sales_value    = sum(sales_value), 
+    avg_pct_loyalty_disc = mean(pct_loyalty_disc)
+  ) %>%
+  filter(total_sales_value > 10000) %>%
+  arrange(desc(avg_pct_loyalty_disc))
