@@ -36,7 +36,7 @@ arrange(desc(is.na(arr_time)))
 
 select(flights, contains("TIME", ignore.case = FALSE))
 
-# Just include ignore.case as one of the parameters to change in the "contains" function
+# Just include ignore.case as one of the parameters to change in the "contains" function.
 
 
 #Q5
