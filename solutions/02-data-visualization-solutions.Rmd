@@ -7,7 +7,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The following five questions are based on concepts covered in [Chapter 3 of R4DS][Grolemund and Wickham 2017, 3] and can be answered using the `mpg` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
+The following five questions are based on concepts covered in [Chapter 3 of R4DS][Grolemund and Wickham 2017, 3]. They can be answered using the `mpg` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
 
 ```{r load-packages, warning = FALSE, message = FALSE}
 library(tidyverse)
