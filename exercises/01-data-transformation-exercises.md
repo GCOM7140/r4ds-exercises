@@ -1,7 +1,7 @@
 Data Transformation Exercises
 ================
 
-The following five questions are based on concepts covered in Chapters 4-6 in R4DS and can be answered using the `flights` dataset from the `nycflights13` package. Start by loading the `tidyverse` and `nycflights13` packages.
+The following five questions are based on concepts covered in [Chapter 5 of R4DS](http://r4ds.had.co.nz/transform.html) and can be answered using the `flights` dataset from the `nycflights13` package. Start by loading the `tidyverse` and `nycflights13` packages.
 
 ``` r
 library(tidyverse)
