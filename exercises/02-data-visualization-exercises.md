@@ -1,7 +1,7 @@
 Data Visualization Exercises
 ================
 
-The following five questions are based on concepts covered in [Chapter 3 of R4DS](http://r4ds.had.co.nz/data-visualisation.html) and can be answered using the `mpg` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
+The following five questions are based on concepts covered in [Chapter 3 of R4DS](http://r4ds.had.co.nz/data-visualisation.html). They can be answered using the `mpg` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
 
 ``` r
 library(tidyverse)
