@@ -18,7 +18,8 @@ filter(flights, distance >= 2000) %>% nrow()
 #Question 1c answer: 51695
 
 #Question 1d: How many flights were destined for airports in the Los Angeles area (LAX, ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
-filter(flights, dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB") & origin != "JFK") %>% nrow()
+filter(flights, dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB") &
+         origin != "JFK") %>% nrow()
 #Question 1d answer: 5737
 
 
@@ -28,7 +29,7 @@ filter(flights,  !is.na(dep_time) & is.na(arr_time)) %>% nrow()
 
 #Question 3: How does arrange() treat missing values? How could you sort all rows with a missing arr_time to the top of the dataset?
 #Arrange treats missing values as if they are the largest number and puts them at the bottom of the row if you use ascending order.  Sort NA's to top of dataset by arranging by descending order of is.na.
-arrange(flights, desc(is.na(arr_time)))
+arrange(flights, desc(is.na(arr_time), desc(arr_time)))
 
 #Question 4: What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you change that default?
 select(flights, contains("TIME"))
