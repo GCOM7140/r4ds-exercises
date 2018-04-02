@@ -6,84 +6,54 @@
 #' ---
 
 library(tidyverse)
-library(nycflights13)
+library(completejourney)
 
-#' **Question 1**: The following questions ask you to find flights that meet
-#' certain criteria and then count them.  
+#Question 1: Create a histogram of quantity. What, if anything, do you find unusual about this visualization?
+#This question is designed to strengthen your ability to use geom_histogram().
 
-#' -   How many flights flew into LAX?  
+ggplot(data = transaction_data) +
+  geom_histogram(mapping = aes( x = quantity))
+#The graph only shows one huge bar.
 
-flights %>% 
-  filter(dest == 'LAX') %>% 
-  nrow()
+#Question 2: Use a line graph to plot total sales value by day. What, if anything, do you find unusual about this visualization?
+#This question is designed to strengthen your ability to use dplyr verbs in combination with geom_line().
 
-#' -   How many flights flew out of LAX?  
+transaction_data %>%
+  group_by (day) %>%
+  mutate (total_sales_value = sum (sales_value, na.rm = TRUE)) %>%
+  ggplot() + 
+    geom_line(mapping = aes( x = day, y = total_sales_value))
 
-flights %>% 
-  filter(origin == 'LAX') %>% 
-  nrow()
+#Question 3: Use a bar graph to compare the total sales values of national and private-label brands.Hint: Because transaction_data does not contain product metadata, run the code below to create a new dataset with additional product information in it. Use my_transaction_data for your answer.
+my_transaction_data <- left_join(transaction_data, product, by = 'product_id')
+my_transaction_data %>%
+  group_by(brand) %>%
+  mutate (total_sales_value_by_brand = sum (sales_value, na.rm = TRUE)) %>%
+  ggplot() +
+   geom_bar(mapping = aes( x = brand, y = total_sales_value_by_brand), stat = 'identity')
 
-#' -   How many flights are greater than or equal to 2000 miles?  
+#Question 4: Building on Question 3, suppose you want to understand whether the retailer's customers' preference for national brands (compared to private-label brands) is stronger in the soft drink category than it is in the cheese category. Examine this supposition by using a stacked bar graph to compare the split between national and private-label brands for soft drinks and cheeses.
 
-flights %>% 
-  filter(distance >= 2000) %>% 
-  nrow()
+#Hint: Follow these three steps to create your plot:
+  
+#Filter my_transaction_data to include only transactions with commodity_desc equal to "SOFT DRINKS" or "CHEESE"
+my_transaction_data %>%
+  filter(commodity_desc %in% c('SOFT DRINKS', 'CHEESE')) %>%
+#Calculate total sales value by commodity_desc and brand
+  group_by(commodity_desc, brand) %>%
+  summarise (total_sales_value_2 = sum (sales_value), na.rm = TRUE) %>%
+#Create the bars using geom_bar with stat = 'identity' and position = 'fill'
+  ggplot() +
+    geom_bar (mapping = aes( x = commodity_desc, y = total_sales_value_2, fill = brand), stat = 'identity', position = 'fill') 
 
-#' -   How many flights were destined for airports in the Los Angeles area 
-#' (LAX, ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?  
+#Question 5: The code below filters my_transaction_data to include only peanut better, jelly, and jam transactions. Then it creates a new variable named product_size equal to product size in ounces. Create a bar graph with pb_and_j_data to visualize the distribution of the retailer's PB&J transactions by product size. Which two product sizes are the most popular?
 
-flights %>% 
-  filter(
-    dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB"), 
-    origin != "JFK"
-  ) %>% 
-  nrow()
-
-#' **Question 2**: How many flights were "ghost flights"? A "ghost flight" is
-#' defined as a flight that departed, but never arrived (i.e., has a missing
-#' `arr_time`).  
-
-flights %>% 
-  filter(!is.na(dep_time), is.na(arr_time)) %>% 
-  nrow()
-
-#' **Question 3**: How does
-#' [`arrange()`](http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange)
-#' treat missing values? How could you sort all rows with a missing `arr_time`
-#' to the top of the dataset?  
-
-#'  
-#' With the arrange function, all non-missing values get sorted in ascending or
-#' descending fashion; then rows with missing values get displayed. The
-#' following code brings missing values to the top, then sorts the observations
-#' in descending order:
-
-flights %>% 
-  arrange(desc(is.na(arr_time)), desc(arr_time))
-
-#' **Question 4**: What do you observe after running the code below? How does
-#' this behavior reflect how
-#' [`select()`](http://r4ds.had.co.nz/transform.html#select-columns-with-select)
-#' helpers deal with uppercase and lowercase matching by default? How can you
-#' change that default?
-
-select(flights, contains("TIME"))
-
-#' The referenced code selects six columns in the `flights` dataset, because the
-#'  `contains()` function is not case-sensitive by default. You can set the
-#' `ignore.case` argument to `FALSE` to change this behavior as follows:
-
-select(flights, contains("TIME", ignore.case = FALSE))
-
-#' **Question 5**: For each destination greater than or equal to 2000 miles
-#' away, compute total minutes of departure delay. Then determine what
-#' proportion of total-departure-delay minutes each destination represents. What
-#' three destinations top the list?
-
-flights %>%
-  filter(distance >= 2000, dep_delay > 0) %>%
-  group_by(dest) %>%
-  summarize(dep_delay_mins = sum(dep_delay)) %>%
-  mutate(dep_delay_pct_of_total = dep_delay_mins / sum(dep_delay_mins)) %>%
-  arrange(-dep_delay_pct_of_total) %>% 
-  head(3)
+pb_and_j_data <- my_transaction_data %>% 
+  filter(commodity_desc == 'PNT BTR/JELLY/JAMS') %>%
+  mutate(
+    product_size = as.factor(as.integer(gsub('([0-9]+)([[:space:]]*OZ)', '\\1',
+                                             curr_size_of_product)))
+  )      
+    ggplot(pb_and_j_data) + 
+      geom_bar(aes(x = product_size))
+    
