@@ -6,12 +6,27 @@
 #' ---
 
 library(tidyverse)
-library(nycflights13)
+library(completejourney)
 
-#' **Question 1**: The following questions ask you to find flights that meet
-#' certain criteria and then count them.  
+#Question 1: Create a histogram of quantity. What, if anything, do you find unusual about this visualization?
+#This question is designed to strengthen your ability to use geom_histogram().
 
-#' -   How many flights flew into LAX?  
+ggplot(data = transaction_data) +
+  geom_histogram(mapping = aes( x = quantity))
+#The graph only shows one huge bar.
+
+#Question 2: Use a line graph to plot total sales value by day. What, if anything, do you find unusual about this visualization?
+#This question is designed to strengthen your ability to use dplyr verbs in combination with geom_line().
+
+transaction_data %>%
+  group_by (day) %>%
+  mutate (total_sales_value = sum (sales_value, na.rm = TRUE)) %>%
+  ggplot() + 
+    geom_line(mapping = aes( x = day, y = total_sales_value))
+
+
+
+
 
 flights %>% 
   filter(dest == 'LAX') %>% 
