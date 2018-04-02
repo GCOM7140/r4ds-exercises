@@ -3,63 +3,56 @@ title: "Data Visualization Exercises"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The following 5 questions are based on concepts covered in Chapters 1-3 in R4DS 
-and can be answered using the `mpg` dataset from the `ggplot2` package. Start by 
-loading the `tidyverse` package, which includes `ggplot2`.
+The following five questions are based on concepts covered in [Chapter 3 of R4DS][Grolemund and Wickham 2017, 3] and can be answered using the `mpg` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
 
-```{r load-packages, warning=FALSE, message=FALSE}
+```{r load-packages, warning = FALSE, message = FALSE}
 library(tidyverse)
 ```
 
-It is highly recommended to run `?mpg` from the R console to first familiarize 
-yourself with the dataset.
+Run `?mpg` in the console to familiarize yourself with the dataset.
 
 --- 
 
-**Question 1**: 
-Run `ggplot(data = mpg)`. What do you see?  
-*This question is [3.2.4.#1](http://r4ds.had.co.nz/data-visualisation.html#exercises) and grows your ability to create the ggplot() canvas [(link)](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot).*
+**Question 1**: Run `ggplot(data = mpg)`. What do you see?  
+
+This question is [3.2.4#1][Grolemund and Wickham 2017, 3.2.4 Exercises]. It is designed to get you thinking about visualizations with [`ggplot()`][Grolemund and Wickham 2017, 3.2.2] from the ground (i.e., canvas) up.
 
 ---
 
-**Question 2**: 
-Make a scatterplot of `cyl` by `displ`, then make a boxplot to 
-visualize the data. What additional information does the boxplot convey? Hint: 
-Use `as.factor(cyl)` when generating the boxplot.  
-*This question is based on [3.2.4.#4](http://r4ds.had.co.nz/data-visualisation.html#exercises) and grows your ability to plot a continuous variable by categorical variable [(link)](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot).*
+**Question 2**: Make a scatterplot of `cyl` vs `displ`, then make a boxplot with the same variables. What additional information does the boxplot convey? 
+
+**Hint:** Use `as.factor(cyl)` while specifying the boxplot.  
+
+This question is based on [3.2.4#4][Grolemund and Wickham 2017, 3.2.4 Exercises]. It is designed to strengthen your ability to plot a continuous variable by a categorical variable.
 
 ---
 
-**Question 3**: 
-What happens if you make a scatterplot of `class` vs `drv`? 
-Create an alternative visualization that better conveys the information. Hint: 
-Use `geom_bar()` with `position="fill"`. Using `geom_bar()` is covered in 
-[3.8](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments).  
-*This question is based on [3.2.4.#5](http://r4ds.had.co.nz/data-visualisation.html#exercises) and grows your ability to plot two categorical variables [(link)](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot).*
+**Question 3**: What happens if you make a scatterplot of `class` vs `drv`? Why is the plot not useful? Create an alternative visualization that displays the data more effectively. 
+
+**Hint:** Use `geom_bar()` with `position = "fill"`. `geom_bar()` is covered in [Section 3.8][Grolemund and Wickham 2017, 3.8].  
+
+This question is based on [3.2.4#5][Grolemund and Wickham 2017, 3.2.4 Exercises]. It is designed to strengthen your ability to plot the joint distribution of two categorical variables.
 
 ---
 
-**Question 4**: 
-What geom would you use to draw:
+**Question 4**: What geom would you use to draw:
 
  - A line chart? 
  - A boxplot?
  - A histogram?
  - An area chart? 
  
-Hint: Type `?geom_` and RStudio should autosuggest various geoms`.  
-*This question is [3.6.1.#1](http://r4ds.had.co.nz/data-visualisation.html#exercises-3) and grows your knowledege of various ggplot "geom" objects [(link)](http://r4ds.had.co.nz/data-visualisation.html#geometric-objects).*
+This question is [3.6.1#1][Grolemund and Wickham 2017, 3.6.1 Exercises]. It is designed to strengthen your knowledege of the various [`ggplot()` geom objects][Grolemund and Wickham 2017, 3.6].
 
 ---
 
-**Question 5**: 
-Will the graphs created by the two code blocks below look different? Why/why not?
+**Question 5**: Will these two graphs look different? Why/why not?
 
-```{r Q5, eval=FALSE}
+```{r Q5, eval = FALSE}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + 
   geom_smooth()
@@ -69,4 +62,11 @@ ggplot() +
   geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
 ```
 
-*This question is [3.6.1.#5](http://r4ds.had.co.nz/data-visualisation.html#exercises-3) and grows your understanding of inheritence with the ggplot mapping argument [(link)](http://r4ds.had.co.nz/data-visualisation.html#a-graphing-template).*
+This question is [3.6.1#5][Grolemund and Wickham 2017, 3.6.1 Exercises]. It is designed to strengthen your understanding of inheritence with respect to the [`ggplot()`][Grolemund and Wickham 2017, 3.2.2] `mapping` argument.
+
+[Grolemund and Wickham 2017, 3]: http://r4ds.had.co.nz/data-visualisation.html
+[Grolemund and Wickham 2017, 3.2.2]: http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot
+[Grolemund and Wickham 2017, 3.2.4 Exercises]: http://r4ds.had.co.nz/data-visualisation.html#exercises
+[Grolemund and Wickham 2017, 3.6]: http://r4ds.had.co.nz/data-visualisation.html#geometric-objects
+[Grolemund and Wickham 2017, 3.6.1 Exercises]: http://r4ds.had.co.nz/data-visualisation.html#exercises-3
+[Grolemund and Wickham 2017, 3.8]: http://r4ds.had.co.nz/data-visualisation.html#position-adjustments
