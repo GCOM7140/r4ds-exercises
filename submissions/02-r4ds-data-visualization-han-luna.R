@@ -2,7 +2,7 @@
 #' title: "Answers to the R4DS Data Transformation Exercise"
 #' author: Luna Han
 #' date: April 2, 2018
-#' output: github_document
+#' output: github_document 
 #' ---
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
