@@ -3,7 +3,7 @@
 #' author: Luna Han
 #' date: April 2, 2018
 #' output: github_document 
-#' ---
+#' --- 
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ?mpg
