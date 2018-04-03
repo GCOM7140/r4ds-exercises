@@ -4,56 +4,39 @@
 #' date: April 2, 2018
 #' output: github_document
 #' ---
-
+knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(completejourney)
+?mpg
+#Question 1: Run ggplot(data = mpg). What do you see?
+ggplot(data = mpg)
 
-#Question 1: Create a histogram of quantity. What, if anything, do you find unusual about this visualization?
-#This question is designed to strengthen your ability to use geom_histogram().
+#Question 2: Make a scatterplot of cyl vs displ, then make a boxplot with the same variables. What additional information does the boxplot convey?
+#Hint: Use as.factor(cyl) while specifying the boxplot.
+ggplot(mpg) + geom_point(mapping = aes( x = cyl, y = displ))
+ggplot(mpg) + geom_boxplot(mapping = aes( x = as.factor(cyl), y = displ))
 
-ggplot(data = transaction_data) +
-  geom_histogram(mapping = aes( x = quantity))
-#The graph only shows one huge bar.
+#Question 3: What happens if you make a scatterplot of class vs drv? Why is the plot not useful? Create an alternative visualization that displays the data more effectively.
+#Hint: Use geom_bar() with position = "fill". geom_bar() is covered in Section 3.8.
+ggplot(mpg) + geom_point(mapping = aes( x = class, y = drv))
+ggplot(mpg) + geom_bar(mapping = aes( x = class, fill= drv))
 
-#Question 2: Use a line graph to plot total sales value by day. What, if anything, do you find unusual about this visualization?
-#This question is designed to strengthen your ability to use dplyr verbs in combination with geom_line().
+#Question 4: What geom would you use to draw:
+#A line chart?
+geom_line()
+#A boxplot?
+geom_boxplot()
+#A histogram?
+geom_histogram()
+#An area chart?
+geom_area()
 
-transaction_data %>%
-  group_by (day) %>%
-  mutate (total_sales_value = sum (sales_value, na.rm = TRUE)) %>%
-  ggplot() + 
-    geom_line(mapping = aes( x = day, y = total_sales_value))
-
-#Question 3: Use a bar graph to compare the total sales values of national and private-label brands.Hint: Because transaction_data does not contain product metadata, run the code below to create a new dataset with additional product information in it. Use my_transaction_data for your answer.
-my_transaction_data <- left_join(transaction_data, product, by = 'product_id')
-my_transaction_data %>%
-  group_by(brand) %>%
-  mutate (total_sales_value_by_brand = sum (sales_value, na.rm = TRUE)) %>%
-  ggplot() +
-   geom_bar(mapping = aes( x = brand, y = total_sales_value_by_brand), stat = 'identity')
-
-#Question 4: Building on Question 3, suppose you want to understand whether the retailer's customers' preference for national brands (compared to private-label brands) is stronger in the soft drink category than it is in the cheese category. Examine this supposition by using a stacked bar graph to compare the split between national and private-label brands for soft drinks and cheeses.
-
-#Hint: Follow these three steps to create your plot:
+#Question 5: Will these two graphs look different? Why/why not?
   
-#Filter my_transaction_data to include only transactions with commodity_desc equal to "SOFT DRINKS" or "CHEESE"
-my_transaction_data %>%
-  filter(commodity_desc %in% c('SOFT DRINKS', 'CHEESE')) %>%
-#Calculate total sales value by commodity_desc and brand
-  group_by(commodity_desc, brand) %>%
-  summarise (total_sales_value_2 = sum (sales_value), na.rm = TRUE) %>%
-#Create the bars using geom_bar with stat = 'identity' and position = 'fill'
-  ggplot() +
-    geom_bar (mapping = aes( x = commodity_desc, y = total_sales_value_2, fill = brand), stat = 'identity', position = 'fill') 
+  ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
 
-#Question 5: The code below filters my_transaction_data to include only peanut better, jelly, and jam transactions. Then it creates a new variable named product_size equal to product size in ounces. Create a bar graph with pb_and_j_data to visualize the distribution of the retailer's PB&J transactions by product size. Which two product sizes are the most popular?
-
-pb_and_j_data <- my_transaction_data %>% 
-  filter(commodity_desc == 'PNT BTR/JELLY/JAMS') %>%
-  mutate(
-    product_size = as.factor(as.integer(gsub('([0-9]+)([[:space:]]*OZ)', '\\1',
-                                             curr_size_of_product)))
-  )      
-    ggplot(pb_and_j_data) + 
-      geom_bar(aes(x = product_size))
-    
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
+# Those two graphs are the same, because you can either put the data and mapping information in the global ggplot function, or into the geom_ fuctions seperately.
