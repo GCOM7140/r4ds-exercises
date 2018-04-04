@@ -7,7 +7,6 @@
 
 library(tidyverse)
 library(ggplot2)
-
 #' **Question 1**: Run `ggplot(data = mpg)`. What do you see?  
 #'
 ggplot(data = mpg)
