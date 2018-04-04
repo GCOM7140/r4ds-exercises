@@ -3,7 +3,6 @@ Answers to the R4DS Data Visulization Exercise
 Zoe Zheng
 April 3, 2018
 
-
 ``` r
 library(tidyverse)
 ```
@@ -29,7 +28,7 @@ library(ggplot2)
 ggplot(data = mpg)
 ```
 
-![](02_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 There is nothing showed in the plots section. **Question 2**: Make a scatterplot of `cyl` by `displ`, then make a boxplot to visualize the data. What additional information does the boxplot convey? scatterplot of `cyl` by `displ`
 
@@ -37,7 +36,7 @@ There is nothing showed in the plots section. **Question 2**: Make a scatterplot
 ggplot(mpg, aes(cyl,displ)) + geom_point()
 ```
 
-![](02_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 The scatterplot shows as the number of cylinders increases, the engine displacement increases.
 
@@ -47,7 +46,7 @@ boxplot of `cyl` by `displ`
 ggplot(mpg, aes(as.factor(cyl),displ)) + geom_boxplot()
 ```
 
-![](02_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 The boxplot shows the similar information as scatterplot does. In addition, we can also see the distribution of data, such as minimum, maximum as well as median within each category.
 
@@ -57,13 +56,13 @@ The boxplot shows the similar information as scatterplot does. In addition, we c
 ggplot(mpg, aes(class,drv)) + geom_point()
 ```
 
-![](02_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 ``` r
 ggplot(mpg) + geom_bar(mapping=aes(x=class,fill=drv),position = "fill")
 ```
 
-![](02_files/figure-markdown_github/unnamed-chunk-5-2.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-5-2.png)
 
 In the scatterplot, the relationship between type of car and whether the car is front-wheel/rear-wheel/four-wheel drive is not clear. Instead, it's better to use a bar char to show the percentage of drive type within each car class.
 
@@ -109,7 +108,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
     ## `geom_smooth()` using method = 'loess'
 
-![](02_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 ``` r
 ggplot() +
@@ -119,6 +118,6 @@ ggplot() +
 
     ## `geom_smooth()` using method = 'loess'
 
-![](02_files/figure-markdown_github/unnamed-chunk-10-2.png)
+![](02-r4ds-data-visualization-zheng-zoe_files/figure-markdown_github/unnamed-chunk-10-2.png)
 
 These two code blocks will generate same graphs. The first code block claims the aes() in ggplot(), so that both geom\_point() and geom\_smooth() follows this aes; the second code block states aes() separately in both geom\_point() and geom\_smooth(), but these two methods have the same effect.
