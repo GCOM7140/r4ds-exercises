@@ -3,6 +3,7 @@ Answers to the R4DS Data Visulization Exercise
 Zoe Zheng
 April 3, 2018
 
+
 ``` r
 library(tidyverse)
 ```
