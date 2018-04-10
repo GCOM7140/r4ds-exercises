@@ -2,7 +2,7 @@
 title: "Exploratory Data Analysis (EDA) Exercises"
 author: Cara Salyers
 date: April 9, 2018
-output: github_document
+output: github_document 
 ---
 
 ```{r setup, include=FALSE}
