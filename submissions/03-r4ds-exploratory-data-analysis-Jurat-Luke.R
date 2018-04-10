@@ -1,3 +1,4 @@
+
 library("tidyverse")
 ?diamonds
 #Q1
@@ -33,9 +34,8 @@ diamonds %>%
 
 #Question 3 
 diamonds %>%
-filter(!is.na(carat), !is.na(price)) %>%
+  filter(!is.na(carat), !is.na(price)) %>%
   mutate(price_binned = cut(price, breaks=c(seq(0, max(price), 5000), 
                                             max(price)), dig.lab=10)) %>%
   ggplot(., aes(price_binned, carat)) + 
   geom_boxplot()
-
