@@ -1,10 +1,8 @@
----
-title: "GCOM 7620 Lab Assignment 1"
-author: "Lo Yeadon"
-date: "April 3, 2018"
-output:
-  html_document: default
----
+
+"R4DS Data Visualizations"
+ "Lo Yeadon"
+"April 3, 2018"
+
 library(tidyverse)
 ?mpg  
   
