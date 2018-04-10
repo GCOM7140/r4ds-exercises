@@ -7,6 +7,7 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+pdf(NULL)
 ```
 
 The following 3 questions are based on concepts covered in Chapters 7-8 in R4DS 
