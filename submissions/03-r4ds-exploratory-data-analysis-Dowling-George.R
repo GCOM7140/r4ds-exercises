@@ -1,7 +1,7 @@
 #' George Dowling HW#3
 #' R4DS
-#' April 10, 2018
-
+##' April 10, 2018
+  
 library(tidyverse)
 library(ggplot2)
 
