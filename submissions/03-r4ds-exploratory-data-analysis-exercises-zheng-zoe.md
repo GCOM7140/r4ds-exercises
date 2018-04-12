@@ -2,7 +2,7 @@ Exploratory Data Analysis (EDA) Exercises
 ================
 Zoe Zheng
 April 10, 2018
-
+ 
 The following 3 questions are based on concepts covered in Chapters 7-8 in R4DS and can be answered using the `diamonds` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
 
 ``` r
