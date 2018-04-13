@@ -1,7 +1,9 @@
 ?diamonds
 library(tidyverse)
 #Question 1#
-ggplot(data=diamonds)+geom_histogram(mapping=aes(x=price),binwidth = 30)
+ggplot(data = diamonds) + 
+  geom_histogram(mapping = aes(x = price), binwidth = 30)
+
 #Many of the diamonds' cost are on the far left of the distribution. 
 
 #Question 2#
@@ -11,7 +13,8 @@ ggplot(diamonds,aes(x=color, y=price))+geom_point()
 ggplot(diamonds,aes(x=clarity, y=price))+geom_point()
 
 diamonds %>%
-  mutate(carat_binned = cut(carat, breaks=c(seq(0, max(carat), .5), max(carat)))) %>%
+  mutate(carat_binned = cut(carat, breaks=c(seq(0, max(carat), .5), 
+                                            max(carat)))) %>%
   ggplot(., aes(x=carat_binned, y=price)) + 
   geom_boxplot()
 #3#
