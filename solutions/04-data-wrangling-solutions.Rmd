@@ -5,6 +5,7 @@ output: github_document
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = TRUE, message = FALSE)
+pdf(NULL)
 ```
 
 The following six exercises are based on concepts covered in 
