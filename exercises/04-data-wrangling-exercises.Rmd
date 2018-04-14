@@ -22,7 +22,7 @@ these datasets.
 
 --- 
 
-### Exercise 1
+## Exercise 1
 ```{r, echo = TRUE, eval = TRUE, error = TRUE}
 people <- tribble(
   ~name,            ~key,     ~value,
@@ -50,7 +50,7 @@ designed to help you hone your understanding of how
 
 ---
 
-### Exercise 2
+## Exercise 2
 ```{r, echo = TRUE}
 preg <- tribble(
   ~pregnant, ~male, ~female,
@@ -67,7 +67,7 @@ to tidy it? What variables are there in `preg`?
 
 ---
 
-### Exercise 3
+## Exercise 3
 ```{r, echo = TRUE, eval = TRUE, warning = TRUE}
 tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
   separate(x, c("one", "two", "three"))
@@ -83,7 +83,7 @@ designed to strengthen your ability to parse a column using
 
 ---
 
-### Exercise 4
+## Exercise 4
 Both  [`separate()`][G&W 2017, 12.4.1]  and [`unite()`][G&W 2017, 12.4.2] have a
 `remove` argument. What does it do? When does setting it to `FALSE` make sense?
 
@@ -93,7 +93,7 @@ arguments such as `remove`.
 
 ---
 
-### Exercise 5
+## Exercise 5
 Using the [`who` dataset][G&W 2017, 12.6], calculate the total number of cases
 of TB per year for China, India, and Bangladesh, then plot these statistics
 over time. What do you notice that's surprising?
@@ -115,7 +115,7 @@ and visualization operations.
 
 ---
 
-### Exercise 6
+## Exercise 6
 Begin by following these steps:
 
 1. Join observations in `flights` with those in `weather` by `origin`, `year`,

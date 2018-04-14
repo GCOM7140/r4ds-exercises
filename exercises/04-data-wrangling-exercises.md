@@ -11,7 +11,8 @@ Also, run `?flights` and `?who` in the console to (re)familiarize yourself with 
 
 ------------------------------------------------------------------------
 
-### Exercise 1
+Exercise 1
+----------
 
 ``` r
 people <- tribble(
@@ -38,7 +39,8 @@ Why can't you spread `people`? How could you add a new column to `people` to fix
 
 ------------------------------------------------------------------------
 
-### Exercise 2
+Exercise 2
+----------
 
 ``` r
 preg <- tribble(
@@ -55,7 +57,8 @@ Do you need to [gather](http://r4ds.had.co.nz/tidy-data.html#gathering) or [spre
 
 ------------------------------------------------------------------------
 
-### Exercise 3
+Exercise 3
+----------
 
 ``` r
 tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
@@ -77,7 +80,8 @@ How would you explain this warning message in layman's terms to someone who can'
 
 ------------------------------------------------------------------------
 
-### Exercise 4
+Exercise 4
+----------
 
 Both [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) and [`unite()`](http://r4ds.had.co.nz/tidy-data.html#unite) have a `remove` argument. What does it do? When does setting it to `FALSE` make sense?
 
@@ -85,7 +89,8 @@ Both [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) and [`unite()
 
 ------------------------------------------------------------------------
 
-### Exercise 5
+Exercise 5
+----------
 
 Using the [`who` dataset](http://r4ds.had.co.nz/tidy-data.html#case-study), calculate the total number of cases of TB per year for China, India, and Bangladesh, then plot these statistics over time. What do you notice that's surprising?
 
@@ -104,7 +109,8 @@ who %>%
 
 ------------------------------------------------------------------------
 
-### Exercise 6
+Exercise 6
+----------
 
 Begin by following these steps:
 
