@@ -18,10 +18,10 @@ Exercise 1
 people <- tribble(
   ~name,            ~key,     ~value,
   #---------------/---------/--------
-  "Ousmane Diaby",    "age",      18,
+  "Ousmane Diaby",    "age",      23,
   "Ousmane Diaby", "height",     196,
-  "Ousmane Diaby",    "age",      24,
-  "Rich Eldh",        "age",      24,
+  "Ousmane Diaby",    "age",      33,
+  "Rich Eldh",        "age",      23,
   "Rich Eldh",     "height",     195
 )
 
@@ -33,7 +33,7 @@ people %>%
 
 Why can't you spread `people`? How could you add a new column to `people` to fix the problem?
 
-**Hint:** You can use `row_number()` to create an `id` column that uniquely identifies the observations in `people`. This `id` column will fix the problem.
+**Hint:** You can use `group_by()` and `row_number()` to create a `time` column that uniquely identifies time periods in `people`. This `time` column will fix the problem.
 
 **Note:** This question is based on [12.3.3 \#3](http://r4ds.had.co.nz/tidy-data.html#exercises-22). It is designed to help you hone your understanding of how [`spread()`](http://r4ds.had.co.nz/tidy-data.html#spreading) behaves with non-unique rows.
 
@@ -74,7 +74,7 @@ tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>%
     ## 2 d     e     f    
     ## 3 h     i     j
 
-How would you explain this warning message in layman's terms to someone who can't figure out what it means? How could you incorporate all of the data into a tibble?
+How would you explain this warning message in layman's terms to someone who couldn't figure out what it means? Suppose they want to make sure that every piece of the tibble makes its way into the result of the [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) function call. What could they do to remedy the situation?
 
 **Note:** This question is based on [12.4.3 \#1](http://r4ds.had.co.nz/tidy-data.html#exercises-23). It is designed to strengthen your ability to parse a column using [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate).
 
@@ -92,7 +92,7 @@ Both [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) and [`unite()
 Exercise 5
 ----------
 
-Using the [`who` dataset](http://r4ds.had.co.nz/tidy-data.html#case-study), calculate the total number of cases of TB per year for China, India, and Bangladesh, then plot these statistics over time. What do you notice that's surprising?
+Using the [`who` dataset](http://r4ds.had.co.nz/tidy-data.html#case-study), calculate the total number of cases of TB per year for China, India, and Bangladesh, then plot these statistics over time. What country-year statistics, if any, surprise you?
 
 **Hint:** Build on this code, which tidies `who`:
 
@@ -118,6 +118,6 @@ Begin by following these steps:
 2.  Bin `wind_gust` and calculate average `dep_delay` for each bin.
 3.  Create a bar graph.
 
-What weather conditions make departure delays more likely?
+At what gust speeds are departure delays the longest on average?
 
 **Note:** This question is based on [13.4.6 \#4](http://r4ds.had.co.nz/relational-data.html#exercises-28). It is designed to strengthen your ability to merge and analyze relational data with [`inner_join()`](http://r4ds.had.co.nz/relational-data.html#inner-join) and [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise).
