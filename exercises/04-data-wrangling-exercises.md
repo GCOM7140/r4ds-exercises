@@ -1,10 +1,11 @@
 Data Wrangling Exercises
 ================
 
-The following six exercises are based on concepts covered in [Chapter 12](http://r4ds.had.co.nz/tidy-data.html) and [Chapter 13](http://r4ds.had.co.nz/relational-data.html) of [R for Data Science](http://r4ds.had.co.nz/). Use the `flights` and `who` datasets that come with the `tidyverse` package to work on them, and start by loading the `tidyverse`.
+The following six exercises are based on concepts covered in [Chapter 12](http://r4ds.had.co.nz/tidy-data.html) and [Chapter 13](http://r4ds.had.co.nz/relational-data.html) of [R for Data Science](http://r4ds.had.co.nz/). Use the `flights` and `who` datasets that come with the `nycflights13` and `tidyverse` packages to work on them, and start by loading the `tidyverse` and `nycflights13`.
 
 ``` r
 library(tidyverse)
+library(nycflights13)
 ```
 
 Also, run `?flights` and `?who` in the console to (re)familiarize yourself with these datasets.
@@ -118,6 +119,6 @@ Begin by following these steps:
 2.  Bin `wind_gust` and calculate average `dep_delay` for each bin.
 3.  Create a bar graph.
 
-At what gust speeds are departure delays the longest on average?
+At what gust speeds are departure delays out of NYC the longest on average?
 
 **Note:** This question is based on [13.4.6 \#4](http://r4ds.had.co.nz/relational-data.html#exercises-28). It is designed to strengthen your ability to merge and analyze relational data with [`inner_join()`](http://r4ds.had.co.nz/relational-data.html#inner-join) and [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise).
