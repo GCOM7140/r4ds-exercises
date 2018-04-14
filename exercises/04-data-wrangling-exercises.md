@@ -7,7 +7,7 @@ The following six exercises are based on concepts covered in [Chapter 12](http:/
 library(tidyverse)
 ```
 
-Also, run `?flights` and `?who` in the console to familiarize yourself with these datasets.
+Also, run `?flights` and `?who` in the console to (re)familiarize yourself with these datasets.
 
 ------------------------------------------------------------------------
 
@@ -114,4 +114,4 @@ Begin by following these steps:
 
 What weather conditions make departure delays more likely?
 
-**Note:** This question is based on [13.4.6 \#4](http://r4ds.had.co.nz/relational-data.html#exercises-28). It is designed to strengthen your ability to merge relational data with [`inner_join()`](http://r4ds.had.co.nz/relational-data.html#inner-join) and then summarize it.
+**Note:** This question is based on [13.4.6 \#4](http://r4ds.had.co.nz/relational-data.html#exercises-28). It is designed to strengthen your ability to merge and analyze relational data with [`inner_join()`](http://r4ds.had.co.nz/relational-data.html#inner-join) and [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise).

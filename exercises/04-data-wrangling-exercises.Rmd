@@ -17,7 +17,7 @@ with the `tidyverse` package to work on them, and start by loading the
 library(tidyverse)
 ```
 
-Also, run `?flights` and `?who` in the console to familiarize yourself with
+Also, run `?flights` and `?who` in the console to (re)familiarize yourself with
 these datasets.
 
 --- 
@@ -126,10 +126,11 @@ Begin by following these steps:
 What weather conditions make departure delays more likely?
 
 **Note:** This question is based on [13.4.6 #4][G&W 2017, 13.4.6]. It is designed
-to strengthen your ability to merge relational data with 
-[`inner_join()`][G&W 2017, 13.4.2] and then summarize it.
+to strengthen your ability to merge and analyze relational data with 
+[`inner_join()`][G&W 2017, 13.4.2] and [`summarize()`][G&W 2017, 5.6].
 
 [G&W 2017]: http://r4ds.had.co.nz/
+[G&W 2017, 5.6]: http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise
 [G&W 2017, 12]: http://r4ds.had.co.nz/tidy-data.html
 [G&W 2017, 12.3.1]: http://r4ds.had.co.nz/tidy-data.html#gathering
 [G&W 2017, 12.3.2]: http://r4ds.had.co.nz/tidy-data.html#spreading
