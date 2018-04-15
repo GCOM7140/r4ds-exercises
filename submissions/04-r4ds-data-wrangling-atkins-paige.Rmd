@@ -1,7 +1,7 @@
 ---
 title: "Data Wrangling Exercises"
 output: github_document
-author: Paige Atkins 1
+author: Paige Atkins 2.0
 ---
 
 ```{r setup, include=FALSE}
