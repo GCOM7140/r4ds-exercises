@@ -35,7 +35,7 @@ getmode(diamonds$price)
 ggplot(diamonds,aes(price)) + geom_density()
 ```
 
-![](03-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%201-1.png)
+![](03-r4ds-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%201-1.png)
 
 The price ranges from 300 to 19000, and most of the prices concentrate around 600. There are a small amount of price around 5000.
 
@@ -46,25 +46,25 @@ The price ranges from 300 to 19000, and most of the prices concentrate around 60
 ggplot(diamonds,aes(carat,price)) + geom_point()
 ```
 
-![](03-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-1.png)
+![](03-r4ds-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-1.png)
 
 ``` r
 ggplot(diamonds,aes(cut,price)) + geom_point()
 ```
 
-![](03-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-2.png)
+![](03-r4ds-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-2.png)
 
 ``` r
 ggplot(diamonds,aes(clarity,price)) + geom_point()
 ```
 
-![](03-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-3.png)
+![](03-r4ds-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-3.png)
 
 ``` r
 ggplot(diamonds,aes(color,price)) + geom_point()
 ```
 
-![](03-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-4.png)
+![](03-r4ds-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%202-4.png)
 
 Carat is most important. Based on the scatterplot, there is a positive correlation between carat and price.
 
@@ -80,4 +80,4 @@ mutate(price_binned = cut(price, breaks=c(seq(0, max(price), 5000), Inf), dig.la
 ggplot(diamonds,aes(price_binned,carat)) + geom_boxplot()
 ```
 
-![](03-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%203-1.png)
+![](03-r4ds-exploratory-data-analysis-exercises-zheng-zoe_files/figure-markdown_github/question%203-1.png)
