@@ -130,6 +130,7 @@ arguments such as `remove`.
 ---
 
 ## Exercise 5
+***Exercise 5 Solution included***
 Using the [`who` dataset][G&W 2017, 12.6], calculate the total number of cases
 of TB per year for China, India, and Bangladesh, then plot these statistics
 over time. What country-year statistics, if any, surprise you?
