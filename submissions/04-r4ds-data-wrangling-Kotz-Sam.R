@@ -13,6 +13,14 @@ people %>%
 #basically spreading people doesn't work b/c one item (age) has multiple values, confusing R
 
 #2
+
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  #--------/------/---------
+  "yes",        NA,      10,
+  "no",         20,      12
+)
+
 preg %>% 
   gather(`male`, `female`, key = "gender", value = "count")
 
