@@ -3,13 +3,7 @@ This repository includes a collection of exercises and solutions based on the
 book [R for Data Science][r4ds], also known as R4DS, by [Hadley Wickham][hadley]
 and [Garrett Grolemund][garrett].
 
-## Table of Contents
- - [Installing the Required Packages](#installing-the-required-packages)
- - [Working on the Exercises](#working-on-the-exercises)
- - [Reviewing the Solutions](#reviewing-the-solutions)
- - [Additional Resources](#additional-resources)
-
-### Installing the Required Packages
+## Installing the Required Packages
 All of the exercises in this repository can be worked on using the tidyverse
 and nycflights13 packages. You can install these packages with the following
 commands:
@@ -19,7 +13,7 @@ install.packages("tidyverse")
 install.packages("nycflights13")
 ```
 
-### Working on the Exercises
+## Working on the Exercises
 Below are links to the exercises in this repository. You can also find them by
 navigating to the [exercises][exercises] folder of this repository and clicking
 on the files ending in `.md`.
@@ -32,7 +26,7 @@ Exercises:
  4. [Data Wrangling][data wrangling exercises]
  5. [Reproducibility][reproducibility exercises]
 
-### Reviewing the Solutions
+## Reviewing the Solutions
 After working through these exercises, have a look at the solutions provided in
 the [solutions][solutions] folder of this repository to compare your work with
 the answers we developed. There are usually multiple ways to perform the same
@@ -48,7 +42,7 @@ Solutions:
  4. [Data Wrangling][data wrangling solutions]
  5. [Reproducibility][reproducibility solutions]
 
-### Additional Resources
+## Additional Resources
 Looking for help? We couldn't recommend the following resources with more enthusiasm!
 
 1. The [R4DS online learning community][r4ds community] and its [slack
