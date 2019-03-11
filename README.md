@@ -59,20 +59,20 @@ Arnold and Contributors.
 
 3. The [UVA StatLab][statlab] and its office hours.
 
-[data transformation exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/01-data-transformation-exercises.md
-[data transformation solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/01-data-transformation-solutions.md
-[data visualization exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/02-data-visualization-exercises.md
-[data visualization solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/02-data-visualization-solutions.md
-[data wrangling exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/04-data-wrangling-exercises.md
-[data wrangling solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/04-data-wrangling-solutions.md
-[eda exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/03-exploratory-data-analysis-exercises.md
-[eda solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/03-exploratory-data-analysis-solutions.md
+[data transformation exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/01-data-transformation-exercises.md#data-transformation-exercises
+[data transformation solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/01-data-transformation-solutions.md#data-transformation-solutions
+[data visualization exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/02-data-visualization-exercises.md#data-visualization-exercises
+[data visualization solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/02-data-visualization-solutions.md#data-visualization-solutions
+[data wrangling exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/04-data-wrangling-exercises.md#data-wrangling-exercises
+[data wrangling solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/04-data-wrangling-solutions.md#data-wrangling-solutions
+[eda exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/03-exploratory-data-analysis-exercises.md#exploratory-data-analysis-eda-exercises
+[eda solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/03-exploratory-data-analysis-solutions.md#exploratory-data-analysis-eda-solutions
 [r4ds]: http://r4ds.had.co.nz/index.html
 [hadley]: https://twitter.com/hadleywickham
 [garrett]: https://twitter.com/StatGarrett
 [exercises]: https://github.com/GCOM7140/r4ds-exercises/tree/master/exercises
 [r4ds community]: https://twitter.com/R4DScommunity
-[reproducibility exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/05-reproducibility-exercises.md
+[reproducibility exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/05-reproducibility-exercises.md#reproducibility-exercises
 [reproducibility solutions]: https://raw.githubusercontent.com/GCOM7140/r4ds-exercises/master/solutions/05-reproducibility-solutions.Rmd
 [slack channel]: https://t.co/Tdv5GyDQym
 [solutions]: https://github.com/GCOM7140/r4ds-exercises/tree/master/solutions
