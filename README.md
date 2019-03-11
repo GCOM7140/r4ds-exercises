@@ -45,13 +45,11 @@ Solutions:
 ## Additional Resources
 Looking for help? We couldn't recommend the following resources with more enthusiasm!
 
-1. The [R4DS online learning community][r4ds community] and its [slack
+ 1. The [R4DS online learning community][r4ds community] and its [slack
 channel][slack channel].
-
-2. [R for Data Science: Exercise Solutions][arnold's solutions] by Jeffrey B.
+ 2. [R for Data Science: Exercise Solutions][arnold's solutions] by Jeffrey B.
 Arnold and Contributors.
-
-3. The [UVA StatLab][statlab] and its office hours.
+ 3. The [UVA StatLab][statlab] and its office hours.
 
 [data transformation exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/01-data-transformation-exercises.md#data-transformation-exercises
 [data transformation solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/01-data-transformation-solutions.md#data-transformation-solutions
