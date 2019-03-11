@@ -34,31 +34,30 @@ Exercises:
 
 ### Reviewing the Solutions
 After working through these exercises, have a look at the solutions provided in
-the [solutions][solutions] folder to compare your work with the answers we
-developed. There are usually multiple ways to perform the same operation in R,
-so don’t be concerned if your code doesn’t match what we developed exactly.
-Focus instead on ensuring that your output and answers appear to be in the same
-ballpark. Below are links to the solution files we developed:
+the [solutions][solutions] folder of this repository to compare your work with
+the answers we developed. There are usually multiple ways to perform the same
+operation in R, so don’t be concerned if your code doesn’t match what we
+developed exactly. Focus instead on ensuring that your output and answers appear
+to be in the same ballpark. Below are links to the solution files we developed:
 
 Solutions: 
 
- 1. [Data Transformation][data transportation solutions]
+ 1. [Data Transformation][data transformation solutions]
  2. [Data Visualization][data visualization solutions]
  3. [Exploratory Data Analysis][eda solutions]
  4. [Data Wrangling][data wrangling solutions]
  5. [Reproducibility][reproducibility solutions]
 
 ### Additional Resources
-If you are looking for help on these exercises, we recommend considering the
-following outlets:
+Looking for help? We couldn't recommend the following resources with more enthusiasm!
 
-1. The [R4DS online learning community][r4dscommunity] and its [slack
+1. The [R4DS online learning community][r4ds community] and its [slack
 channel][slack channel].
 
 2. [R for Data Science: Exercise Solutions][arnold's solutions] by Jeffrey B.
 Arnold and Contributors.
 
-3. The [UVA StatLab][statlab].
+3. The [UVA StatLab][statlab] and its office hours.
 
 [data transformation exercises]: https://github.com/GCOM7140/r4ds-exercises/blob/master/exercises/01-data-transformation-exercises.md
 [data transformation solutions]: https://github.com/GCOM7140/r4ds-exercises/blob/master/solutions/01-data-transformation-solutions.md
