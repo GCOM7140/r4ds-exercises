@@ -1,55 +1,61 @@
 Data Visualization Solutions
 ================
 
-The following five questions are based on concepts covered in [Chapter 3 of R4DS](http://r4ds.had.co.nz/data-visualisation.html). They can be answered using the `mpg` dataset from the `ggplot2` package. Start by loading the `tidyverse` package, which includes `ggplot2`.
+The following questions are based on concepts covered in [Chapter 3](http://r4ds.had.co.nz/data-visualisation.html) of R4DS, and answers to them lie in the `mpg` dataset of the ggplot2 package. Load the tidyverse, which includes ggplot2, to start working on them.
 
 ``` r
 library(tidyverse)
 ```
 
-Run `?mpg` in the console to familiarize yourself with the dataset.
-
 ------------------------------------------------------------------------
 
 **Question 1**: Run `ggplot(data = mpg)`. What do you see?
 
-This question is [3.2.4\#1](http://r4ds.had.co.nz/data-visualisation.html#exercises). It is designed to get you thinking about visualizations with [`ggplot()`](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot) from the ground (i.e., canvas) up.
-
-**Answer**:
-
-An empty graph, appearing as a grey box in the Plots tab of RStudio. Think of this graph as a blank canvas that you can use as a foundation for plots. Running `ggplot()` renders the same blank, grey box.
+We developed this question based on the first exercise in section [3.2.4](http://r4ds.had.co.nz/data-visualisation.html#exercises) of R4DS. It is designed to get you thinking about visualizations with [`ggplot()`](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot) from the ground (i.e., canvas) up.
 
 ``` r
 ggplot(data = mpg)
 ```
 
-![](02-data-visualization-solutions_files/figure-markdown_github/Q1-1.png)
+![](02-data-visualization-solutions_files/figure-markdown_github/unnamed-chunk-1-1.png)
+
+``` r
+# An empty graph, appearing as a grey box in the Plots tab of RStudio. Think of
+# this graph as a blank canvas that you can use as a foundation for plots.
+# Running `ggplot()` renders the same blank, grey box.
+```
 
 ------------------------------------------------------------------------
 
-**Question 2**: Make a scatterplot of `cyl` vs `displ`, then make a boxplot with the same variables. What additional information does the boxplot convey?
+**Question 2**: Make a scatterplot of `cyl` vs `displ`. Then, make a boxplot with the same variables. What additional information does the boxplot convey?
 
 **Hint:** Use `as.factor(cyl)` while specifying the boxplot.
 
-This question is based on [3.2.4\#4](http://r4ds.had.co.nz/data-visualisation.html#exercises). It is designed to strengthen your ability to plot a continuous variable by a categorical variable.
-
-**Answer**:
-
-While the scatterplot shows that there is a positive relationship between cylinders and engine displacement, the boxplots display this relationship in greater detail with medians, interquartile ranges, and outlier points. In particular, the medians and non-overlapping interquartile ranges make the relationship quite obvious. The medians roughly show that for every two cylinders, engine displacement increases by 1.5 (i.e., `cyl` == 4 has `disp` = ~2, `cyl` == 6 has `disp` = ~3.5, and `cyl` == 8 has `disp` = ~5).
+We developed this question based on the fourth exercise in section [3.2.4](http://r4ds.had.co.nz/data-visualisation.html#exercises) of R4DS. It is designed to strengthen your ability to plot a continuous variable by a categorical variable.
 
 ``` r
 ggplot(data = mpg, aes(x = cyl, y = displ)) + 
   geom_point()
 ```
 
-![](02-data-visualization-solutions_files/figure-markdown_github/Q2-1.png)
+![](02-data-visualization-solutions_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 ``` r
 ggplot(data = mpg, aes(x = as.factor(cyl), y = displ)) + 
   geom_boxplot()
 ```
 
-![](02-data-visualization-solutions_files/figure-markdown_github/Q2-2.png)
+![](02-data-visualization-solutions_files/figure-markdown_github/unnamed-chunk-2-2.png)
+
+``` r
+# While the scatterplot shows that there is a positive relationship between
+# cylinders and engine displacement, the boxplots display this relationship in
+# greater detail with medians, interquartile ranges, and outlier points. In
+# particular, the medians and non-overlapping interquartile ranges make the
+# relationship quite obvious. The medians roughly show that for every two
+# cylinders, engine displacement increases by 1.5 (i.e., `cyl` == 4 has 
+# `disp` = ~2, `cyl` == 6 has `disp` = ~3.5, and `cyl` == 8 has `disp` = ~5).
+```
 
 ------------------------------------------------------------------------
 
@@ -57,25 +63,28 @@ ggplot(data = mpg, aes(x = as.factor(cyl), y = displ)) +
 
 **Hint:** Use `geom_bar()` with `position = "fill"`. `geom_bar()` is covered in [Section 3.8](http://r4ds.had.co.nz/data-visualisation.html#position-adjustments).
 
-This question is based on [3.2.4\#5](http://r4ds.had.co.nz/data-visualisation.html#exercises). It is designed to strengthen your ability to plot the joint distribution of two categorical variables.
-
-**Answer**:
-
-The scatterplot of `class` vs `drv` plots many observations in the same (x, y) coordinate space, so it is difficult to gauge the proportion of observations for each combination. The bar chart conveys this information much more effectively.
+We developed this question based on the fifth exercise in section [3.2.4](http://r4ds.had.co.nz/data-visualisation.html#exercises) of R4DS. It is designed to strengthen your ability to plot the joint distribution of two categorical variables.
 
 ``` r
 ggplot(mpg, aes(x = class, y = drv)) +
   geom_point()
 ```
 
-![](02-data-visualization-solutions_files/figure-markdown_github/Q3-1.png)
+![](02-data-visualization-solutions_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 ``` r
 ggplot(mpg) +
   geom_bar(mapping = aes(x = class, fill = drv), position = "fill")
 ```
 
-![](02-data-visualization-solutions_files/figure-markdown_github/Q3-2.png)
+![](02-data-visualization-solutions_files/figure-markdown_github/unnamed-chunk-3-2.png)
+
+``` r
+# The scatterplot of `class` vs `drv` plots many observations in the same (x, y)
+# coordinate space, so it is difficult to gauge the proportion of observations
+# for each combination. The bar chart conveys this information much more
+# effectively.
+```
 
 ------------------------------------------------------------------------
 
@@ -86,14 +95,14 @@ ggplot(mpg) +
 -   A histogram?
 -   An area chart?
 
-This question is [3.6.1\#1](http://r4ds.had.co.nz/data-visualisation.html#exercises-3). It is designed to strengthen your knowledege of the various [`ggplot()` geom objects](http://r4ds.had.co.nz/data-visualisation.html#geometric-objects).
+This question is the first exercise in section [3.6.1](http://r4ds.had.co.nz/data-visualisation.html#exercises-3) of R4DS. It is designed to strengthen your knowledege of the various [`ggplot()` geom objects](http://r4ds.had.co.nz/data-visualisation.html#geometric-objects).
 
-**Answer**:
-
--   `geom_line()`
--   `geom_boxplot()`
--   `geom_histogram()`
--   `geom_area()` or `geom_bar()`
+``` r
+ # - geom_line()
+ # - geom_boxplot()
+ # - geom_histogram()
+ # - geom_area() or geom_bar()
+```
 
 ------------------------------------------------------------------------
 
@@ -109,8 +118,14 @@ ggplot() +
   geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
 ```
 
-This question is [3.6.1\#5](http://r4ds.had.co.nz/data-visualisation.html#exercises-3). It is designed to strengthen your understanding of inheritence with respect to the [`ggplot()`](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot) `mapping` argument.
+This question is the fifth exercise in section [3.6.1](http://r4ds.had.co.nz/data-visualisation.html#exercises-3) of R4DS. It is designed to strengthen your understanding of inheritence with respect to the [`ggplot()`](http://r4ds.had.co.nz/data-visualisation.html#creating-a-ggplot) `mapping` argument.
 
-**Answer**:
-
-The graphs will be identical, although the first is more efficient. It enters the `data` and `mapping` arguments into the global `ggplot()` function, whereas the second enters them into the `geom_point()` and `geom_smooth()` layers separately. Geometric objects inherit the `mapping` argument from the `ggplot()` command if it is specified. This example illustrates an important point: objects can have different mappings, which allows for a great deal of flexibility across layers in visualizations.
+``` r
+# The graphs will be identical, although the first is more efficient, because it
+# enters the `data` and `mapping` arguments into the global `ggplot()` function,
+# whereas the second enters them into the `geom_point()` and `geom_smooth()`
+# layers separately. Geometric objects inherit the `mapping` argument from the
+# `ggplot()` command if it is specified. This example illustrates an important
+# point: objects can have different mappings, which allows for a great deal of
+# flexibility across layers of visualizations.
+```
