@@ -13,6 +13,13 @@ install.packages("tidyverse")
 install.packages("nycflights13")
 ```
 
+### Recommended Preparation
+We wrote the exercises and solutions in this repository in a way that emphasizes
+"tidy" data principles, the tidyverse, and other practices covered in [R for
+Data Science][r4ds]. Reviewing relevant parts of R4DS carefully *before*
+attempting to complete these exercises is the best way to ensure that you grow
+as a data scientist through the process of working on them.
+
 ## Working on the Exercises
 Below are links to the exercises in this repository. You can also find them by
 navigating to the [exercises][exercises] folder of this repository and clicking
