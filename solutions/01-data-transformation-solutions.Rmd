@@ -28,47 +28,39 @@ meet certain criteria and (b) counting these subsets of flights.
  - How many flights were destined for airports in the Los Angeles area (LAX, 
  ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
 
-**Hint:** For each question, consider filtering the `flights` dataset, then
-counting the number of rows that remain using `nrow()`. You might find it
-helpful to revisit section [5.2.1][5.2.1] of R4DS, which is where Hadley and
-Garrett review comparison operators. For the fourth question, consider using the
-`%in%` operator as well as the exclamation mark (`!`), which you can vocalize as
-"not."
+For each question, consider filtering the `flights` dataset, then counting the
+number of rows that remain using `nrow()`. You might find it helpful to revisit
+section [5.2.1][5.2.1] of R4DS, which is where Hadley and Garrett review
+comparison operators. For the fourth question, consider using the `%in%`
+operator as well as the exclamation mark (`!`), which you can read in your head
+or vocalize as "not."
 
 We developed this set of questions based on the first exercise in section
 [5.2.4][5.2.4 Exercises] of R4DS. Each is designed to strengthen your ability to
 use the dplyr verb [`filter()`][filter] effectively.
 
-**Answer:**
-
-```{r}
+```{r include = TRUE, eval = TRUE}
 # How many flights flew into LAX?
 flights %>% 
   filter(dest == "LAX") %>% 
   nrow()
-```
 
-```{r}
 # How many flights flew out of LAX?
 flights %>% 
   filter(origin == "LAX") %>% 
   nrow()
-```
 
-**Note:** This is a bit of a trick question. You can confirm that the correct
-answer is zero by running `?flights`. The dataset description states: "On-time
-data for all flights that *departed* NYC (i.e. JFK, LGA or EWR)" (emphasis
-added). LAX is the airport code for Los Angeles International Airport, so zero
-flights in this dataset originated from LAX.
+# This is a bit of a trick question. You can confirm that the correct answer is
+# zero by running ?flights. The dataset description states: "On-time data for
+# all flights that *departed* NYC (i.e. JFK, LGA or EWR)" (emphasis added). LAX
+# is the airport code for Los Angeles International Airport, so zero flights in
+# this dataset originated from LAX.
 
-```{r}
 # How many flights were longer than or equal to 2,000 miles in distance?
 flights %>% 
   filter(distance >= 2000) %>% 
   nrow()
-```
 
-```{r}
 # How many flights were destined for airports in the Los Angeles area (LAX, ONT, 
 # SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
 flights %>% 
@@ -85,11 +77,11 @@ flights %>%
 How many flights were "ghost flights"? A "ghost flight" is defined as a flight 
 that departed, but never arrived (i.e., has a missing value for `arr_time`).
 
-We developed this question based on the third exercise in section [5.2.4][5.2.4 Exercises] of R4DS. It's designed to strengthen your understanding of how the dplyr verb [`filter()`][filter] treats `NA` values.
+We developed this question based on the third exercise in section [5.2.4][5.2.4
+Exercises] of R4DS. It's designed to strengthen your understanding of how the
+dplyr verb [`filter()`][filter] treats `NA` values.
 
-**Answer:**
-
-```{r Q2}
+```{r include = TRUE, eval = TRUE}
 flights %>% 
   filter(!is.na(dep_time), is.na(arr_time)) %>% 
   nrow()
@@ -105,22 +97,19 @@ We developed this question based on the first exercise in section [5.3.1][5.3.1
 Exercises] of R4DS. It's designed to strengthen your understanding of how the
 dplyr verb [`arrange()`][arrange] treats `NA` values.
 
-**Answer**:
-With the [`arrange()`][arrange] function, all non-missing values get sorted in 
-ascending or descending fashion; then rows with missing values get displayed. 
+```{r include = TRUE, eval = TRUE}
+# With the arrange() function, all non-missing values get sorted in ascending or
+# descending fashion; then rows with missing values get displayed. The following
+# code brings the missing values to the top with desc(is.na(arr_time)):
 
-The following code brings the missing values to the top with
-`desc(is.na(arr_time))`:
-
-```{r Q3}
 flights %>% 
   arrange(desc(is.na(arr_time)))
-```
 
-**Note:** `is.na(arr_time)` converts `arr_time` into `TRUE/FALSE` values. When
-sorting `TRUE/FALSE` values in ascending order, `FALSE` gets listed first, so
-`is.na(arr_time)` needs to be sorted in descending order to lift the missing
-values to the top of the dataset.
+# Note: `is.na(arr_time)` converts `arr_time` into `TRUE/FALSE` values. When
+# sorting `TRUE/FALSE` values in ascending order, `FALSE` gets listed first, so
+# `is.na(arr_time)` needs to be sorted in descending order to lift the missing
+# values to the top of the dataset.
+```
 
 ---
 
@@ -129,7 +118,7 @@ What do you observe after running the code below? How does this behavior reflect
 how [`select()`][select] helpers deal with uppercase and lowercase matching by 
 default? How can you override this default behavior? 
 
-```{r Q4, eval = FALSE}
+```{r include = TRUE, eval = FALSE}
 select(flights, contains("TIME"))`
 ```
 
@@ -137,12 +126,11 @@ We developed this question based on the fourth exercise in section [5.4.1][5.4.1
 Exercises] of R4DS. It's designed to strengthen your ability to use the dplyr
 verb [`select()`][select] effectively.
 
-**Answer**:
-The code above fails to select any column names because `contains()` is case
-sensitive by default. The following code sets the `ignore.case` argument to
-`TRUE` to select columns that contain "TIME", "time", "TiMe", and so on:
+```{r include = TRUE, eval = TRUE}
+# The code above fails to select any column names because `contains()` is case
+# sensitive by default. The following code sets the `ignore.case` argument to
+# `TRUE` to select columns that contain "TIME", "time", "TiMe", and so on:
 
-```{r Q4a, eval=FALSE}
 select(flights, contains("TIME", ignore.case = TRUE))
 ```
 
@@ -168,9 +156,7 @@ We developed this question based on the fourth exercise in section [5.7.1][5.7.1
 Exercises] of R4DS. It's designed to strengthen your ability to calculate
 [per-group proportions of totals][grouped mutates].
 
-**Answer**:
-
-```{r Q5}
+```{r include = TRUE, eval = TRUE}
 flights %>%
   filter(distance >= 2000, arr_delay > 0) %>%
   group_by(dest) %>%
