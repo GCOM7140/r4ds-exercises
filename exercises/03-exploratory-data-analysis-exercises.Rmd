@@ -1,5 +1,5 @@
 ---
-title: "Exploratory Data Analysis (EDA) Solutions"
+title: "Exploratory Data Analysis (EDA) Exercises"
 output: github_document
 ---
 
@@ -26,7 +26,7 @@ Exercises] of R4DS. It is designed to strengthen your ability to [visualize the
 distribution][7.3.1] of a continuous variable with the `geom_histogram()`
 function.
 
-```{r include = TRUE, eval = TRUE}
+```{r include = FALSE, eval = FALSE}
 ggplot(data = diamonds) + 
   geom_histogram(mapping = aes(x = price), binwidth = 100)
 
@@ -43,7 +43,7 @@ We developed this question based on the second exercise in section [7.5.1][7.5.1
 Exercises] of R4DS. It is designed to strengthen your ability to [interpret
 variable relationships from plots][7.5].
 
-```{r include = TRUE, eval = TRUE, message = FALSE}
+```{r include = FALSE, eval = FALSE, message = FALSE}
 # Carat is the clear winner. While there are a number of ways to visualize
 # covariation between the 4Cs and price, the plots below suggest that the
 # relationship appears to be most dramatic between carat and price.
@@ -87,7 +87,7 @@ We developed this question based on the second exercise in section [7.5.3][7.5.3
 Exercises] of R4DS. It is designed to strengthen your ability to [interpret
 variable relationships from plots][7.5].
 
-```{r include = TRUE, eval = TRUE}
+```{r include = FALSE, eval = FALSE}
 diamonds %>%
   ggplot(mapping = aes(x = price, y = carat)) +
   geom_boxplot(
@@ -95,7 +95,7 @@ diamonds %>%
   )
 ```
 
-```{r include = TRUE, eval = TRUE, fig.height = 8}
+```{r include = FALSE, eval = FALSE, fig.height = 8}
 diamonds %>%
   mutate(
     price_binned = price %>% 
