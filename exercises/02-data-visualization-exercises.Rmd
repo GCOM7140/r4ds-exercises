@@ -97,7 +97,7 @@ This question is the first exercise in section [3.6.1][3.6.1 Exercises] of R4DS.
 It is designed to strengthen your knowledege of the various [`ggplot()` geom
 objects][3.6].
 
-```{r include = FALSE, eval = FALSE}
+```{r include = FALSE, eval =  FALSE}
  # - geom_line()
  # - geom_boxplot()
  # - geom_histogram()
