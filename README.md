@@ -31,7 +31,9 @@ Exercises:
  2. [Data Visualization][data visualization exercises]
  3. [Exploratory Data Analysis][eda exercises]
  4. [Data Wrangling][data wrangling exercises]
+<!---
  5. [Reproducibility][reproducibility exercises]
+-->
 
 ## Reviewing the Solutions
 After working through these exercises, have a look at the solutions provided in
@@ -47,7 +49,9 @@ Solutions:
  2. [Data Visualization][data visualization solutions]
  3. [Exploratory Data Analysis][eda solutions]
  4. [Data Wrangling][data wrangling solutions]
+<!---
  5. [Reproducibility][reproducibility solutions]
+-->
 
 ## Additional Resources
 Looking for help? We couldn't recommend the following resources with more enthusiasm!
