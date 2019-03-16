@@ -1,47 +1,38 @@
 Data Wrangling Exercises
 ================
 
-The following six exercises are based on concepts covered in [Chapter 12](http://r4ds.had.co.nz/tidy-data.html) and [Chapter 13](http://r4ds.had.co.nz/relational-data.html) of [R for Data Science](http://r4ds.had.co.nz/). Use the `flights` and `who` datasets that come with the `nycflights13` and `tidyverse` packages to work on them, and start by loading the `tidyverse` and `nycflights13`.
+The following questions are based on concepts covered in \[Chapter 12\]\[chapter 12\] and \[Chapter 13\]\[chapter 13\] of R4DS, and answers to them lie in the `flights` and `who` datasets of the nycflights13 and ggplot2 package.s Load nycflights13 and tidyverse, which includes ggplot2, to start working on them.
 
 ``` r
-library(tidyverse)
 library(nycflights13)
+library(tidyverse)
 ```
 
-Also, run `?flights` and `?who` in the console to (re)familiarize yourself with these datasets.
+You might also benefit from running `?flights` and `?who` to (re)familiarize yourself with these datasets.
 
 ------------------------------------------------------------------------
 
-Exercise 1
-----------
+**Question 1**: The `player` tibble below is meant to record De'Andre Hunter and Kyle Guy's dates of birth and heights. Why can't you tidy it up with the [`spread()`](http://r4ds.had.co.nz/tidy-data.html#spreading) function? How could you add a new column to `player` to fix the problem?
+
+We developed this question based on the third exercise in section [12.3.3](http://r4ds.had.co.nz/tidy-data.html#exercises-22) of R4DS. It is designed to strengthen your understanding of how [`spread()`](http://r4ds.had.co.nz/tidy-data.html#spreading) behaves with non-unique rows.
 
 ``` r
-people <- tribble(
-  ~name,            ~key,     ~value,
-  #---------------/---------/--------
-  "Ousmane Diaby",    "age",      23,
-  "Ousmane Diaby", "height",     196,
-  "Ousmane Diaby",    "age",      33,
-  "Rich Eldh",        "age",      23,
-  "Rich Eldh",     "height",     195
+player <- tribble(
+  ~name,             ~key,     ~value,
+  #----------------/---------/-----------------------
+  "De'Andre Hunter",    "dob", "December 2, 1997",
+  "De'Andre Hunter", "height", 201,
+  "De'Andre Hunter",    "dob", "August 11, 1997",
+  "Kyle Guy",           "dob", "August 11, 1997",
+  "Kyle Guy",        "height", 191
 )
-
-people %>% 
-  spread(key, value)
 ```
 
-    ## Error: Duplicate identifiers for rows (1, 3)
-
-Why can't you spread `people`? How could you add a new column to `people` to fix the problem?
-
-**Hint:** You can use `group_by()` and `row_number()` to create a `time` column that uniquely identifies time periods in `people`. This `time` column will fix the problem.
-
-**Note:** This question is based on [12.3.3 \#3](http://r4ds.had.co.nz/tidy-data.html#exercises-22). It is designed to help you hone your understanding of how [`spread()`](http://r4ds.had.co.nz/tidy-data.html#spreading) behaves with non-unique rows.
+**Hint:** You can use `group_by()` and `row_number()` to create a `keep` column that identifies unique combinations of keys. This `keep` column can be used to rid the data of the inaccurate observation for De'Andre's date of birth.
 
 ------------------------------------------------------------------------
 
-Exercise 2
-----------
+**Question 2**: Do you need to [gather](http://r4ds.had.co.nz/tidy-data.html#gathering) or [spread](http://r4ds.had.co.nz/tidy-data.html#spreading) `preg` (see below) to tidy it? What variables does `preg` include?
 
 ``` r
 preg <- tribble(
@@ -52,14 +43,13 @@ preg <- tribble(
 )
 ```
 
-Do you need to [gather](http://r4ds.had.co.nz/tidy-data.html#gathering) or [spread](http://r4ds.had.co.nz/tidy-data.html#spreading) `preg` to tidy it? What variables are there in `preg`?
-
-**Note:** This question is based on [12.3.3 \#4](http://r4ds.had.co.nz/tidy-data.html#exercises-22).
+We developed this question based on the fourth exercise in section [12.3.3](http://r4ds.had.co.nz/tidy-data.html#exercises-22) of R4DS. It is designed to strengthen your understanding of the distinction between the [`gather()`](http://r4ds.had.co.nz/tidy-data.html#gathering) and [`spread()`](http://r4ds.had.co.nz/tidy-data.html#spreading) functions of the tidyr package.
 
 ------------------------------------------------------------------------
 
-Exercise 3
-----------
+**Question 3**: How would you explain the warning message below in layman's terms to someone who couldn't figure out what it means? Suppose they want to make sure that every piece of the tibble makes its way into the result of the [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) function call. What could they do to remedy the situation?
+
+We developed this question based on the first exercise in section [12.4.3](http://r4ds.had.co.nz/tidy-data.html#exercises-23) of R4DS. It is designed to strengthen your ability to parse a column using the [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) function of the tidyr package.
 
 ``` r
 tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
@@ -75,27 +65,15 @@ tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>%
     ## 2 d     e     f    
     ## 3 h     i     j
 
-How would you explain this warning message in layman's terms to someone who couldn't figure out what it means? Suppose they want to make sure that every piece of the tibble makes its way into the result of the [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) function call. What could they do to remedy the situation?
+------------------------------------------------------------------------
 
-**Note:** This question is based on [12.4.3 \#1](http://r4ds.had.co.nz/tidy-data.html#exercises-23). It is designed to strengthen your ability to parse a column using [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate).
+**Question 4**: Both [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) and [`unite()`](http://r4ds.had.co.nz/tidy-data.html#unite) have a `remove` argument. What does it do? When does setting it to `FALSE` make sense?
+
+We developed this question based on the second exercise in section [12.4.3](http://r4ds.had.co.nz/tidy-data.html#exercises-23) of R4DS. It is designed to strengthen your ability to parse columns with functions in the tidyr package while making use of arguments such as `remove`.
 
 ------------------------------------------------------------------------
 
-Exercise 4
-----------
-
-Both [`separate()`](http://r4ds.had.co.nz/tidy-data.html#separate) and [`unite()`](http://r4ds.had.co.nz/tidy-data.html#unite) have a `remove` argument. What does it do? When does setting it to `FALSE` make sense?
-
-**Note:** This question is based on [12.4.3 \#2](http://r4ds.had.co.nz/tidy-data.html#exercises-23). It is designed to strengthen your ability to parse columns while making use of arguments such as `remove`.
-
-------------------------------------------------------------------------
-
-Exercise 5
-----------
-
-Using the [`who` dataset](http://r4ds.had.co.nz/tidy-data.html#case-study), calculate the total number of cases of TB per year for China, India, and Bangladesh, then plot these statistics over time. What country-year statistics, if any, surprise you?
-
-**Hint:** Build on this code, which tidies `who`:
+**Question 5**: Using the [`who` dataset](http://r4ds.had.co.nz/tidy-data.html#case-study), calculate the total number of cases of TB per year for China, India, and Bangladesh, then plot these statistics over time. What country-year statistics, if any, surprise you? You can tidy the `who` dataset with:
 
 ``` r
 who %>%
@@ -106,19 +84,12 @@ who %>%
   separate(sexage, c("sex", "age"), sep = 1)
 ```
 
-**Note:** This question is based on [12.6.1 \#4](http://r4ds.had.co.nz/tidy-data.html#exercises-25). It is designed to strengthen your ability to create a pipeline full of data wrangling and visualization operations.
+We developed this question based on the fourth exercise in section [12.6.1](http://r4ds.had.co.nz/tidy-data.html#exercises-25) of R4DS. It is designed to strengthen your ability to create a pipeline full of data wrangling and visualization operations.
 
 ------------------------------------------------------------------------
 
-Exercise 6
-----------
+**Question 6**: At what wind speeds are departure delays out of NYC the longest on average?
 
-Begin by following these steps:
+You can begin addressing this question by joining observations in the `flights` dataset of the nycflights13 package with those in `weather` dataset of the same package by `origin`, `year`, `month`, `day`, and `hour`.
 
-1.  Join observations in `flights` with those in `weather` by `origin`, `year`, `month`, `day`, and `hour`.
-2.  Bin `wind_gust` and calculate average `dep_delay` for each bin.
-3.  Create a bar graph.
-
-At what gust speeds are departure delays out of NYC the longest on average?
-
-**Note:** This question is based on [13.4.6 \#4](http://r4ds.had.co.nz/relational-data.html#exercises-28). It is designed to strengthen your ability to merge and analyze relational data with [`inner_join()`](http://r4ds.had.co.nz/relational-data.html#inner-join) and [`summarize()`](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise).
+We developed this question based on the fourth exercise in section [13.4.6](http://r4ds.had.co.nz/relational-data.html#exercises-28) of R4DS. It is designed to strengthen your ability to merge and analyze relational data with [joins](http://r4ds.had.co.nz/relational-data.html#inner-join) and downstream data transformation operations, such as [group summaries](http://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise), and [geometric objects](https://r4ds.had.co.nz/data-visualisation.html#geometric-objects).
