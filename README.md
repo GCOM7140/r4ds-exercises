@@ -13,7 +13,7 @@ install.packages("tidyverse")
 install.packages("nycflights13")
 ```
 
-### Recommended Preparation
+## Recommended Preparation
 We wrote the exercises and solutions in this repository in a way that emphasizes
 "tidy" data principles, the tidyverse, and other practices covered in [R for
 Data Science][r4ds]. Reviewing relevant parts of R4DS carefully *before*
