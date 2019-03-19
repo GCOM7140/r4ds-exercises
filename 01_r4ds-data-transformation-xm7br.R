@@ -11,4 +11,3 @@ flights %>%
 flights %>%
   filter (origin == "LAX")%>%
   nrow()
-  
