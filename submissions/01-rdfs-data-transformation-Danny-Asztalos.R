@@ -18,4 +18,5 @@ flights %>%
 
 #How many flights were longer than or equal to 2,000 miles in distance?
 
+
 #How many flights were destined for airports in the Los Angeles area (LAX, ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
