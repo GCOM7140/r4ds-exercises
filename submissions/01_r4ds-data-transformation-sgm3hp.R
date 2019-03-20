@@ -1,4 +1,4 @@
-library(tidyverse)
+library(tidyverse) 
 library(nycflights13)  
 
 ##Question 1: Responding to this set of questions requires two steps: (a) finding flights that meet certain criteria and (b) counting these subsets of flights.
@@ -45,5 +45,6 @@ flights %>%
   mutate(arr_delay_percent_total = arr_delay_mins / sum(arr_delay_mins)) %>%
   arrange(desc(arr_delay_percent_total)) %>%
   head(3)  
+
 
 
