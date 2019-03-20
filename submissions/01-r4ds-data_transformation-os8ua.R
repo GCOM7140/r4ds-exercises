@@ -39,4 +39,12 @@ flights %>%
   nrow()
 str(flights)
 
-## Question 3 - How does arrange() treat missing values, and how could you sort all of the rows with a
+## Question 3 - How does arrange() treat missing values, and how could you sort all of the rows with a missing arr_time to the top of the dataset
+
+flights %>%
+  arrange(desc(is.na(arr_time)))
+
+ ## Question 4 - What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?
+
+select(flights, contains("TIME"))  # only returns tibble with variables containing time in the name
+
