@@ -7,3 +7,8 @@ flights %>%
   filter(dest == "LAX") %>% 
   nrow()
 
+# 1b) How many flights flew out of LAX?
+
+flights %>% 
+  filter(origin == "LAX") %>% 
+  nrow()
