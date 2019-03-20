@@ -1,4 +1,4 @@
-library(tidyverse) 
+library(tidyverse)  
 library(nycflights13)  
 
 ##Question 1: Responding to this set of questions requires two steps: (a) finding flights that meet certain criteria and (b) counting these subsets of flights.
