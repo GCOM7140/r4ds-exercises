@@ -51,9 +51,9 @@ flights %>%
 
 select(flights, contains("TIME"))
 
-# This shows that select() helpers are case sensitive in terms of matching. You can override this by using the ignore.case argument and setting it to "TRUE". 
+# This shows that select() helpers are not case sensitive in terms of matching. You can override this by using the ignore.case argument and setting it to "FALSE". 
 
-select(flights, contains("TIME", ignore.case = TRUE))
+select(flights, contains("TIME", ignore.case = FALSE))
 
 # +++++ QUESTION 5 +++++
 
@@ -66,3 +66,5 @@ flights %>%
   mutate(arr_delay_pct_of_total = arr_delay_mins / sum(arr_delay_mins)) %>%
   arrange(desc(arr_delay_pct_of_total)) %>% 
   head(3)
+
+# HW submission!
