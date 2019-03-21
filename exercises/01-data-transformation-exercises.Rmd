@@ -128,7 +128,7 @@ verb [`select()`][select] effectively.
 
 ```{r include = FALSE, eval = FALSE}
 # The code above selects columns in the flights dataset that contain the letter
-# t followed by i, m, and e. Importantly, the variabe names could contain
+# t followed by i, m, and e. Importantly, the variable names could contain
 # "TIME", "time", "TiMe", and so on, because the select() helper contains() is
 # not case sensitive by default. The following code sets the `ignore.case`
 # argument to `FALSE` to inhibit this functionality.
