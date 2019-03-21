@@ -53,6 +53,15 @@ Solutions:
  5. [Reproducibility][reproducibility solutions]
 -->
 
+# Submitting your Work
+Add your answers to the [submissions] folder for submission purposes. Please use
+the following file-name convention for your submissions:
+
+- 01_r4ds-data-transformation-computingid (.R or .R/.md or .Rmd / .md)
+- 02_r4ds-data-visualization-computingid (.R or .R/.md or .Rmd / .md)
+- 03_r4ds-exploratory-data-analysis-computingid (.R or .R/.md or .Rmd / .md)
+- 04_r4ds-data-wrangling-computingid (.R or .R/.md or .Rmd / .md)
+
 ## Additional Resources
 Looking for help? We couldn't recommend the following resources with more enthusiasm!
 
@@ -79,6 +88,7 @@ Arnold and Contributors.
 [reproducibility solutions]: https://raw.githubusercontent.com/GCOM7140/r4ds-exercises/master/solutions/05-reproducibility-solutions.Rmd
 [slack channel]: https://t.co/Tdv5GyDQym
 [solutions]: https://github.com/GCOM7140/r4ds-exercises/tree/master/solutions
+[submissions]: https://github.com/GCOM7140/completejourney-exercises/tree/master/submissions
 [statlab]: https://data.library.virginia.edu/statlab/
 [jesse's blog]: https://medium.com/@kierisi/r4ds-learning-to-learn-b22ffa7419f8
 [arnold's solutions]: https://jrnold.github.io/r4ds-exercise-solutions/index.html
