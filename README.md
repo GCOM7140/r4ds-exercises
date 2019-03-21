@@ -63,7 +63,8 @@ the following file-name convention for your submissions:
 - 04_r4ds-data-wrangling-computingid (.R or .R/.md or .Rmd / .md)
 
 ## Additional Resources
-Looking for help? We couldn't recommend the following resources with more enthusiasm!
+Looking for help? We couldn't recommend the following resources with more
+enthusiasm!
 
  1. The [R4DS online learning community][r4ds community] and its [slack
 channel][slack channel].
