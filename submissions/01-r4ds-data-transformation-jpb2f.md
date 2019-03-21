@@ -22,7 +22,9 @@ library(nycflights13)
 
 **Question 1**: Responding to this set of questions requires two steps:
 (a) finding flights that meet certain criteria and (b) counting these
-subsets of flights. How many flights flew into LAX?
+subsets of flights.
+
+How many flights flew into LAX?
 
 ``` r
 flights %>% 
@@ -69,7 +71,7 @@ flights %>%
 
 **Question 2**: How many flights were “ghost flights”? A “ghost flight”
 is defined as a flight that departed, but never arrived (i.e., has a
-missing value for arr\_time).
+missing value for `arr_time`).
 
 ``` r
 flights %>% 
@@ -79,14 +81,14 @@ flights %>%
 
     ## [1] 458
 
-**Question 3**: How does arrange() treat missing values, and how could
-you sort all of the rows with a missing arr\_time to the top of the
+**Question 3**: How does `arrange()` treat missing values, and how could
+you sort all of the rows with a missing `arr_time` to the top of the
 dataset?
 
 ``` r
 # With the arrange() function, all non-missing values get sorted in ascending or
 # descending fashion; then rows with missing values get displayed. The following
-# code brings the missing values to the top with desc(is.na(arr_time)):
+# code brings the missing values to the top with `desc(is.na(arr_time))`:
 
 flights %>% 
   arrange(is.na(arr_time) %>% desc())
