@@ -48,7 +48,7 @@ select(flights, contains("TIME", ignore.case = TRUE))
 
 #Question 5: For each destination more than or equal to 2,000 miles away from NYC's airports, compute the total number of minutes their arrivals were delayed. Then, determine how much, as a percentage, each of these destinations contributed to the total number of arrival-delay minutes that long-haul destinations (i.e., those more than or equal to 2,000 miles away from NYC's airports) amassed in 2013. Which three destinations top the list?
 
-flights %>%
+flights %>% 
   filter(distance >= 2000, arr_delay > 0) %>%
   group_by(dest) %>%
   summarize(arr_delay_mins = sum(arr_delay)) %>%
