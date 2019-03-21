@@ -89,7 +89,7 @@ Arnold and Contributors.
 [reproducibility solutions]: https://raw.githubusercontent.com/GCOM7140/r4ds-exercises/master/solutions/05-reproducibility-solutions.Rmd
 [slack channel]: https://t.co/Tdv5GyDQym
 [solutions]: https://github.com/GCOM7140/r4ds-exercises/tree/master/solutions
-[submissions]: https://github.com/GCOM7140/completejourney-exercises/tree/master/submissions
+[submissions]: https://github.com/GCOM7140/r4ds-exercises/tree/master/submissions
 [statlab]: https://data.library.virginia.edu/statlab/
 [jesse's blog]: https://medium.com/@kierisi/r4ds-learning-to-learn-b22ffa7419f8
 [arnold's solutions]: https://jrnold.github.io/r4ds-exercise-solutions/index.html
