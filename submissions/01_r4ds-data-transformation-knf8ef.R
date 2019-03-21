@@ -2,7 +2,7 @@
 ### GCOM 7140 (Customer) ############
 ### Data Transformation Exercises ###
 ### R4DS, Chapter 5               ###
-### 3/22/19                       ###
+### 3/21/19                       ###
 #####################################
 
 
@@ -57,3 +57,11 @@ part_group <- group_by(part_filter, dest)
 part_summarize <- summarize(part_group, total_arr_delay = sum(arr_delay))
 part_mutate <- mutate(part_summarize, prop_arr_delay = total_arr_delay / sum(total_arr_delay))
 head(arrange(part_mutate, desc(prop_arr_delay)), 3)
+
+flights %>%
+  filter(distance >= 2000, arr_delay > 0) %>%
+  group_by(dest) %>%
+  summarize(total_arr_delay = sum(arr_delay)) %>%
+  mutate(prop_arr_delay = total_arr_delay / sum(total_arr_delay)) %>%
+  arrange(desc(prop_arr_delay)) %>%
+  head(3)
