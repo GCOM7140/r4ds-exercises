@@ -1,16 +1,65 @@
 library(tidyverse)
 library(nycflights13)
 
+flights <- flights
+
 #Question 1: Responding to this set of questions requires two steps: (a) finding flights that meet certain criteria and (b) counting these subsets of flights.
 
 #How many flights flew into LAX?
 
-nrow(filter(flights, dest == 'LAX'))
-
-flights %>% 
-  filter(dest == 'LAX') 
+filter(flights, dest == "LAX")
+nrow(filter(flights, dest == "LAX"))
 
 #How many flights flew out of LAX?
 
+filter(flights, origin == "LAX")
+nrow(filter(flights, origin == "LAX"))
+
+#How many flights were longer than or equal to 2,000 miles in distance?
+
 flights %>% 
-  filter(origin == 'LAX') 
+  filter(distance >= 2000) %>%
+  nrow()
+
+#How many flights were destined for airports in the Los Angeles area (LAX, ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
+
+flights %>% 
+  filter(dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB"), origin != "JFK") %>%
+  nrow()
+
+#Question 2: How many flights were "ghost flights"? A "ghost flight" is defined as a flight that departed, but never arrived (i.e., has a missing value for arr_time).
+
+flights %>% 
+  filter(is.na(arr_time), !is.na(dep_time)) %>%
+  nrow()
+
+#Question 3: How does arrange() treat missing values, and how could you sort all of the rows with a missing arr_time to the top of the dataset? 
+
+#arrange send missing values to the end of the list
+
+flights %>% arrange(desc(is.na(arr_time)))
+
+#Question 4: What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?                    
+
+select(flights, contains("TIME"))
+
+#This line of code selects every attribute/variable with "time" in the title
+
+#To override:
+
+select(flights, contains("TIME", ignore.case = TRUE))
+
+#Question 5: For each destination more than or equal to 2,000 miles away from NYC's airports, compute the total number of minutes their arrivals were delayed. Then, determine how much, as a percentage, each of these destinations contributed to the total number of arrival-delay minutes that long-haul destinations (i.e., those more than or equal to 2,000 miles away from NYC's airports) amassed in 2013. Which three destinations top the list?
+
+
+longflights <- flights %>% filter(distance >= 2000, arr_delay > 0, year == 2013)
+
+dest_delay <- longflights %>% 
+               group_by(dest) %>%
+                summarise(min_delayed = sum(arr_delay))
+
+dest_delay %>% 
+  mutate(percent_of_delays = (min_delayed/sum(min_delayed))) %>% 
+  arrange(desc(percent_of_delays)) %>%
+  head(3)
+
