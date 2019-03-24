@@ -7,10 +7,10 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The following questions are based on concepts covered in [Chapter 12][chapter
-12] and [Chapter 13][chapter 13] of R4DS, and answers to them lie in the
-`flights` and `who` datasets of the nycflights13 and ggplot2 package.s Load
-nycflights13 and tidyverse, which includes ggplot2, to start working on them.
+The following questions are based on concepts covered in [Chapter 12][12] and
+[Chapter 13][13] of R4DS, and answers to them lie in the `flights` and `who`
+datasets of the nycflights13 and ggplot2 package.s Load nycflights13 and
+tidyverse, which includes ggplot2, to start working on them.
 
 ```{r load-packages, warning = FALSE, message = FALSE}
 library(nycflights13)
