@@ -1,16 +1,15 @@
 library(tidyverse)
 library(nycflights13)
 
-# Question 1
+# ++++++++ DATA TRANSFORMATION ++++++++
+
+# +++++ QUESTION 1 +++++
+
 # How many flights flew into LAX?
 
 flights %>%
-    filter(dest == "LAX") %>%
-    nrow()
-
-
-nrow(filter(flights, dest == "LAX"))
-?flights
+  filter(dest == "LAX") %>%
+  nrow()
 
 # How many flights flew out of LAX?
 
@@ -18,7 +17,7 @@ flights %>%
   filter(origin == "LAX") %>%
   nrow()
 
-# How many flights were longer than or equal to 2000 miles in distance?
+# How many flights were longer than or equal to 2,000 miles in distance?
 
 flights %>%
   filter(distance >= 2000) %>%
@@ -27,35 +26,37 @@ flights %>%
 # How many flights were destined for airports in the Los Angeles area (LAX, ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
 
 flights %>%
-  filter(dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB") & origin != "JFK") %>%
+  filter(dest %in% c("LAX", "ONT", "SNA", "PSP", "SBD", "BUR", "LGB"),
+         origin != "JFK") %>%
   nrow()
 
+# +++++ QUESTION 2 +++++
 
-# Question 2
 # How many flights were "ghost flights"? A "ghost flight" is defined as a flight that departed, but never arrived (i.e., has a missing value for arr_time).
 
 flights %>%
-  filter(is.na(dep_time) == F & is.na(arr_time) == T) %>%
+  filter(!is.na(dep_time), is.na(arr_time)) %>%
   nrow()
 
-# Question 3
+# +++++ QUESTION 3 +++++
+
 # How does arrange() treat missing values, and how could you sort all of the rows with a missing arr_time to the top of the dataset?
-# arrange() puts all missing values at the bottom of the sorted dataset
 
 flights %>%
   arrange(desc(is.na(arr_time)))
 
-# Question 4: What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?
+# +++++ QUESTION 4 +++++
+
+# What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?
 
 select(flights, contains("TIME"))
 
-# The select statement doesn't return any columns.
-# contains() seems to not be case sensitive.
-# Can override through setting the default value of ignore.case = FALSE
+# This shows that select() helpers are not case sensitive in terms of matching. You can override this by using the ignore.case argument and setting it to "FALSE". 
 
-select(flights, contains("TIME", ignore.case = TRUE))
+select(flights, contains("TIME", ignore.case = FALSE))
 
-# Question 5
+# +++++ QUESTION 5 +++++
+
 # For each destination more than or equal to 2,000 miles away from NYC's airports, compute the total number of minutes their arrivals were delayed. Then, determine how much, as a percentage, each of these destinations contributed to the total number of arrival-delay minutes that long-haul destinations (i.e., those more than or equal to 2,000 miles away from NYC's airports) amassed in 2013. Which three destinations top the list?
 
 flights %>%
@@ -66,6 +67,4 @@ flights %>%
   arrange(desc(arr_delay_pct_of_total)) %>% 
   head(3)
 
-
-
-
+# HW submission!
