@@ -34,4 +34,4 @@ ggplot() +
   geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
 
-# the graphs will be the same, ggplot 
+# the graphs will be the same, the first one just stores the values as a global setting and automatically populates the empty parentheses for geom_point and geom_smooth.
