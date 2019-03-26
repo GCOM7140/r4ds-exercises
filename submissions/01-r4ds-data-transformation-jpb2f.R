@@ -57,3 +57,17 @@ flights %>%
 
 flights %>% 
   arrange(is.na(arr_time) %>% desc())
+
+#' Question 4: What do you observe after running the code below? How does this
+#' behavior reflect how select() helpers deal with uppercase and lowercase
+#' matching by default? How can you override this default behavior?
+
+select(flights, contains("TIME"))
+
+# The code above selects columns in the flights dataset that contain the letter
+# t followed by i, m, and e. Importantly, the variable names could contain
+# "TIME", "time", "TiMe", and so on, because the select() helper contains() is
+# not case sensitive by default. The following code sets the `ignore.case`
+# argument to `FALSE` to inhibit this functionality.
+
+select(flights, contains("TIME", ignore.case = FALSE))

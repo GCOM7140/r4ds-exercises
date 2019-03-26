@@ -1,6 +1,5 @@
 library(nycflights13)
 library(tidyverse)
-nycflights13::flights
 
 ### Question1 ###
 
