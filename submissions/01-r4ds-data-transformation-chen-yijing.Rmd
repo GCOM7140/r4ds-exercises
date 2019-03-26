@@ -1,0 +1,82 @@
+---
+title: "R4DS transformation"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r load-packages, warning = FALSE, message = FALSE}
+library(nycflights13)
+library(tidyverse)
+```
+---
+
+##Question1
+
+### How many flights flew into LAX? 
+``` {r echo = TRUE}
+flights %>%
+  filter(dest == 'LAX')%>%
+  nrow()
+```
+
+
+###How many flights flew out of LAX?
+``` {r echo = TRUE}
+
+flights %>%
+  filter(origin == 'LAX')%>%
+  nrow()
+```
+
+###How many flights were longer than or equal to 2,000 miles in distance?
+``` {r echo = TRUE}
+flights %>%
+  filter(distance >= 2000)%>%
+  nrow()
+```
+
+###How many flights were destined for airports in the Los Angeles area (LAX, ONT, SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
+``` {r echo = TRUE}
+flights %>%
+  filter(dest %in% c("LAX","ONT","SNA","PSP","SBD","BUR","LGB")) %>%
+  filter(origin != "JFK") %>%
+  nrow()
+```
+
+##Question 2
+``` {r echo = TRUE}
+flights %>%
+  filter(!is.na(dep_time) & is.na(arr_time)) %>%
+  nrow()
+```
+
+##Question 3 
+###How does arrange() treat missing values, and how could you sort all of the rows with a missing arr_time to the top of the dataset?
+``` {r echo = TRUE}
+flights %>%
+  filter(!is.na(dep_time)) %>%
+  arrange(!is.na(arr_time), arr_time)
+```
+#### arrange() usually puts missign values at the bottom. by sorting , we can put missing arr_time on top.  
+
+## Quesiton 4
+###What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?
+``` {r echo = T}
+select(flights, contains("TIME", ignore.case = TRUE))
+```
+#### Any colum with name containing the string 'time' is selected. the selection is not case sensitive. Adding ignore.case = True will override the default .
+
+## Question 5 
+###For each destination more than or equal to 2,000 miles away from NYC's airports, compute the total number of minutes their arrivals were delayed. Then, determine how much, as a percentage, each of these destinations contributed to the total number of arrival-delay minutes that long-haul destinations (i.e., those more than or equal to 2,000 miles away from NYC's airports) amassed in 2013. Which three destinations top the list?
+```{r echo = TRUE}
+flights %>%
+  filter (distance >= 2000, arr_delay >0) %>%
+  group_by(dest) %>%
+  summarize(arr_delay_total = sum(arr_delay))%>%
+  mutate(arr_delay_pct = arr_delay_total/sum(arr_delay_total) )%>%
+  arrange(desc(arr_delay_pct))%>%
+  select(dest, arr_delay_pct)%>%
+  head(3)
+```
