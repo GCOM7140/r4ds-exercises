@@ -31,3 +31,8 @@ ggplot(data = mpg, mapping = aes(x = as.factor(cyl), y = displ)) +
 #' relationship quite obvious. The medians roughly show that for every two
 #' cylinders, engine displacement increases by 1.5 (i.e., `cyl` == 4 has `disp`
 #' = ~2, `cyl` == 6 has `disp` = ~3.5, and `cyl` == 8 has `disp` = ~5).
+
+#' Question 3: What happens if you make a scatterplot of class vs drv? Why is
+#' the plot not useful? Create an alternative visualization that displays the
+#' data more effectively.
+
