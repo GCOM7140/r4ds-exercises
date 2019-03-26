@@ -66,5 +66,3 @@ flights %>%
   mutate(arr_delay_pct_of_total = arr_delay_mins / sum(arr_delay_mins)) %>%
   arrange(desc(arr_delay_pct_of_total)) %>% 
   head(3)
-
-# HW submission!
