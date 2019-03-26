@@ -65,10 +65,6 @@ flights %>%
 
 # ***Professor Boichuk - I saw this note when I was working through the solutions and could not figure out if this was code or not? Should I ignore this?***
 
-```{r include = TRUE, eval = FALSE}
-select(flights, contains("TIME"))`
-```
-
 select(flights, contains("TIME", ignore.case = TRUE))
 
 ### Question 5 ###
@@ -83,5 +79,72 @@ flights %>%
   arrange(desc(arr_delay_pct_of_total)) %>% 
   head(3)
 
-### End of Code for the moment - future exercises can be added ###
 
+#' ----
+#' R4DS HW #2
+#' author: McLean Long
+#' date: 3/26/19
+#' output: github_document
+#' ----
+#' 
+
+# This is Assignment 2 - Data Visualizations
+
+library(tidyverse)
+
+library(ggplot2)
+
+### Question 1 ###
+
+ggplot(data = mpg)
+
+# Initially it is just a gray box - which when reading the chapter I thought I had done something incorrectly, but is just a sign that you have begun to work in the "mpg" section of 'ggplot'. 
+
+ggplot(data = mpg) +
+geom_point(mapping = aes(x = displ, y = hwy))
+
+# What I see if an interesting spread based on the information within the data. This is covered in R4DS, but I think this visualization of all the individual points is nice. 
+
+### Question 2 ###
+
+ggplot(data = mpg, aes(x = cyl, y = displ)) + 
+  geom_point()
+
+ggplot(data = mpg, aes(x = as.factor(cyl), y = displ)) + 
+  geom_boxplot()
+
+# Both of these visuliazations build on Question 1 and segment the data into two different plots. The boxplot really emphasizes the relationships between engines and cylinders and which relationships are really strong.
+
+### Question 3 ###
+
+ggplot(mpg, aes(x = class, y = drv)) +
+  geom_point()
+
+ggplot(mpg) +
+  geom_bar(mapping = aes(x = class, fill = drv), position = "fill")
+
+# Initially I just got a plot of points and I was very confused. I went back and read the question and noticed my error. After some trial and error I got an interesting plot that is broken down into a colorful count by the type of vehicle in question.
+
+### Question 4 ### - this info comes from the chapter and I saved it for future use in data visualizations
+
+# Line Chart = geom_line()
+
+# Boxplot = geom_boxplot()
+
+# Histogram = geom_histogram()
+
+# Area Chart =  geom_bar()
+
+### Question 5 ### - this is a question about comparing graphs and whether or not they are identical. Running both allows for an in-depth comparison. 
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
+
+# In fact they are identical - they are using different techniques to find this graph, but the end result is the same. This proves the versatility of R. 
+
+### End of code for Exercise 2 ### 
