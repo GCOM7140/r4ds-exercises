@@ -1,6 +1,6 @@
 #############################
 # Chris Dowdy March 19      #
-# completejourney-exercises #
+# r4ds                      #
 # Data Transformation       #
 #############################
 
