@@ -62,7 +62,7 @@ This question is the first exercise in section [3.6.1](http://r4ds.had.co.nz/dat
 ------------------------------------------------------------------------
 
 **Question 5**: Will these two graphs look different? Why/why not?
-
+k
 ``` r
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + 
