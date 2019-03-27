@@ -1,25 +1,25 @@
-###  r4ds Data Transformation  ###
-
 library(tidyverse)
 library(nycflights13)
 
-## Question 1
-
+#1a
 # How many flights flew into LAX?
 flights %>% 
   filter(dest == "LAX") %>% 
   nrow()
 
+#1b
 # How many flights flew out of LAX?
 flights %>% 
   filter(origin == "LAX") %>% 
   nrow()
 
+#1c
 # How many flights were longer than or equal to 2,000 miles in distance?
 flights %>% 
   filter(distance >= 2000) %>% 
   nrow()
 
+#1d
 # How many flights were destined for airports in the Los Angeles area (LAX, ONT, 
 # SNA, PSP, SBD, BUR, or LGB), but did not originate out of JFK?
 flights %>% 
@@ -29,25 +29,19 @@ flights %>%
   ) %>% 
   nrow()
 
-## Question 2
-
-#How many were ghost flights
+#2
 flights %>% 
   filter(!is.na(dep_time), is.na(arr_time)) %>% 
   nrow()
 
-## Question 3 
-
+#3
 flights %>% 
   arrange(desc(is.na(arr_time)))
 
-## Question 4
-
-select(flights, contains("TIME"))`
+#4
 select(flights, contains("TIME", ignore.case = TRUE))
 
-## Question 5 
-
+#5
 flights %>%
   filter(distance >= 2000, arr_delay > 0) %>%
   group_by(dest) %>%

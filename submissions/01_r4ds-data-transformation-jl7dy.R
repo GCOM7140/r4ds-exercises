@@ -34,3 +34,5 @@ flights %>%
   mutate(arr_delay_pct = arr_delay_mins / sum(arr_delay_mins)) %>%
   arrange(desc(arr_delay_pct)) %>%
   head(3)
+
+
