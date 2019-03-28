@@ -1,9 +1,9 @@
-#####################################
-### GCOM 7140 (Customer) ############
-### Data Transformation Exercises ###
-### R4DS, Chapter 7               ###
-### 3/28/19                       ###
-#####################################
+###########################################
+### GCOM 7140 (Customer)                ###
+### Exploratory Data Analysis Exercises ###
+### R4DS, Chapter 7                     ###
+### 3/28/19                             ###
+###########################################
 
 
 ### file name: 03_r4ds-exploratory-data-analysis-knf8ef.R
