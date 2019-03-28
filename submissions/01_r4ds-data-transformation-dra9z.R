@@ -1,3 +1,10 @@
+#'---
+#'title: Answers to R4DS Data transformation Exercises"
+#'author: Danny Asztalos
+#'date:
+#'output: gitbuh file
+#'---
+
 #install.packages("tidyverse")
 #install.packages("nycflights13")
 
@@ -42,7 +49,8 @@ flights %>%
 flights %>% 
   arrange(desc(is.na(arr_time)))
 
-#Question 4 What do you observe after running the code below? How does this behavior reflect how select() helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?
+#'Question 4 What do you observe after running the code below? How does this behavior reflect how select() 
+#'helpers deal with uppercase and lowercase matching by default? How can you override this default behavior?
 
 select(flights, contains("TIME", ignore.case = TRUE))
 
