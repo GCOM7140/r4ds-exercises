@@ -1,39 +1,49 @@
 
 library(tidyverse)
-library(juicelaundry)
 
+#Q1 
+ggplot(data = diamonds) + 
+  geom_histogram(mapping = aes(x = price), binwidth = 100)
 
+#Q2 Which of the 4Cs (carat, cut, clarity, color) is most important for predicting the price of a diamond?
 
-#Q1 Using `transaction`, create a customer-level dataset with median
-transaction %>%
-  group_by(customer_id) %>%
-  summarize(spend_median = median(price_charged))
+# Carat is the clear winner. While there are a number of ways to visualize
+# covariation between the 4Cs and price, the plots below suggest that the
+# relationship appears to be most dramatic between carat and price.
+# The relationship between carat and price can be explored with a scatterplot
+# via the geom_point() function
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point() + 
+  geom_smooth()
+# The relationship between the categorical Cs (clarity, color, and cut) and
+# price can be explored with box plots via the geom_boxplot() function
+ggplot(diamonds, aes(x = cut, y = price)) +
+  geom_boxplot()
+ggplot(diamonds, aes(x = clarity %>% fct_reorder(price), y = price)) +
+  geom_boxplot() + 
+  coord_cartesian(ylim = c(0, 7500))
+ggplot(diamonds, aes(x = color %>% fct_reorder(price), y = price)) +
+  geom_boxplot() + 
+  coord_cartesian(ylim = c(0, 7500))
+# To look at the carat variable as a box plot for consistency purposes, carat
+# can be binned using the `cut_width()` function from the ggplot2 package.
+diamonds %>%
+  ggplot(mapping = aes(x = carat, y = price)) +
+  geom_boxplot(mapping = aes(group = cut_width(carat, .25)))
 
-#Q2 Building on Question 2, create a histogram to plot the
-
-transaction %>%
-  group_by(customer_id) %>%
-  summarize(spend_median = median(price_charged)) %>%
-  ggplot(aes(x = spend_median)) + 
-  geom_histogram(binwidth = 5, center = 2.5, closed = "left") +
-  coord_cartesian(xlim = c(0, 30))
-
-#Q3 Are customers who order a salad more likely than average toorder a juice, too? That is, calculate [lift][Wikipedia, lift] for the association rule" that a salad in a transaction (i.e., `product_name ==  "SALAD"`) implies that a cold-press juice is in the same transaction (i.e., `product_name == "COLD-PRESSED JUICES"`). Does the association between these products offer support for the notion that customers purchase juice to go withtheir salads?
-  
-line_item %>% 
-  inner_join(sku, by = "sku_id") %>%
-  mutate(
-    a  = product_name     == "SALAD",
-    b  = product_category == "COLD-PRESSED JUICES"
-  ) %>%
-  group_by(transaction_id) %>%
-  summarize(
-    transaction_has_a = max(a), 
-    transaction_has_b = max(b)
-  ) %>%
-  summarize(
-    prop_both  = sum(transaction_has_a * transaction_has_b == 1) /
-      sum(transaction_has_a == 1),
-    prob_b     = mean(transaction_has_b),
-    lift_a     = prop_both / prob_b
+#Q3
+diamonds %>%
+  ggplot(mapping = aes(x = price, y = carat)) +
+  geom_boxplot(
+    mapping = aes(group = price %>% cut_width(width = 2500, center = 1250))
   )
+
+diamonds %>%
+  mutate(
+    price_binned = price %>% 
+      cut_width(width = 2500, center = 1250) %>% 
+      fct_relevel(rev)
+  ) %>% 
+  ggplot(mapping = aes(x = carat)) +
+  geom_histogram(binwidth = .125 , center = 0, show.legend = FALSE) +
+  facet_wrap(~price_binned, scales = "free_y", ncol = 1)
