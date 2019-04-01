@@ -53,4 +53,10 @@ who %>%
 
 # Question 6
 flights %>%
-  
+  inner_join(weather, by = c("origin", "year", "month", "day", "hour")) %>%
+  mutate(wind = cut_width(wind_speed, width = 2, center = 1)) %>%
+  group_by(wind) %>%
+  summarize(mean_delay = mean(dep_delay, na.rm = T)) %>%
+  ggplot(aes(x = wind, y = mean_delay)) +
+  geom_col() + 
+  coord_flip()
