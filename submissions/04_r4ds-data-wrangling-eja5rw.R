@@ -1,9 +1,8 @@
-# Data-Wrangling Exercises
-
 library(nycflights13)
 library(tidyverse)
 
-# Question 1
+#Question 1: The player tibble below is meant to record De’Andre Hunter and Kyle Guy’s dates of birth and heights. Why can’t you tidy it up with the spread() function? How could you add a new column to player to fix the problem?
+
 player <- tribble(
   ~name,             ~key,     ~value,
   #----------------/---------/-----------------------
@@ -12,6 +11,7 @@ player <- tribble(
   "De'Andre Hunter",    "dob", "August 11, 1997",
   "Kyle Guy",           "dob", "August 11, 1997",
   "Kyle Guy",        "height", 191
+)
 
 player %>% 
   group_by(name, key) %>% 
@@ -19,23 +19,30 @@ player %>%
   spread(key, value) %>% 
   filter(keep == 1)
 
-# Question 2
+#Question 2: Do you need to gather or spread preg (see below) to tidy it? What variables does preg include?
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  #--------/------/---------
+  "yes",        NA,      10,
+  "no",         20,      12
+)
+
 preg %>% 
   gather(`male`, `female`, key = "gender", value = "count")
 
-# Preg has values for variable name
+#Question 3: How would you explain the warning message below in layman’s terms to someone who couldn’t figure out what it means? Suppose they want to make sure that every piece of the tibble makes its way into the result of the separate() function call. What could they do to remedy the situation?
 
-# Question 3
-
+tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
+  separate(x, c("one", "two", "three"))
 tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
   separate(x, c("one", "two", "three"), extra = "merge")
 
-# Extra value, so you need to merge
+#Question 4: Both separate() and unite() have a remove argument. What does it do? When does setting it to FALSE make sense?
 
-# Question 4
-# Remove tells R whether or not to eliminate the column being parsed. Might be good to keep to keep track
+#determines whether R should remove or keep the orignial columns; keep for troubleshooting
 
-# Question 5
+#Question 5: Using the who dataset, calculate the total number of cases of TB per year for China, India, and Bangladesh, then plot these statistics over time. What country-year statistics, if any, surprise you? You can tidy the who dataset with:
+
 who %>%
   gather(code, value, new_sp_m014:newrel_f65, na.rm = TRUE) %>% 
   mutate(code = gsub("newrel", "new_rel", code)) %>%
@@ -56,9 +63,9 @@ who %>%
   geom_point() + 
   geom_line()
 
-# The precipitous rises and falls are surprising
+#Bangladesh is very low in 2009; china has a big increase in 2008
 
-# Question 6
+#Question 6: At what wind speeds are departure delays out of NYC the longest on average?
 flights %>%
   inner_join(weather, by = c("origin", "year", "month", "day", "hour")) %>%
   mutate(
@@ -74,4 +81,4 @@ flights %>%
   ggplot(aes(x = wind_speed, y = dep_delay)) +
   geom_smooth()
 
-# Delays are at their worst between 30-35
+#30-35mph
