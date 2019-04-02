@@ -1,9 +1,8 @@
-# Data-Wrangling Exercises
-
 library(nycflights13)
 library(tidyverse)
 
-# Question 1
+#Question 1#
+
 player <- tribble(
   ~name,             ~key,     ~value,
   #----------------/---------/-----------------------
@@ -12,6 +11,7 @@ player <- tribble(
   "De'Andre Hunter",    "dob", "August 11, 1997",
   "Kyle Guy",           "dob", "August 11, 1997",
   "Kyle Guy",        "height", 191
+)
 
 player %>% 
   group_by(name, key) %>% 
@@ -19,23 +19,37 @@ player %>%
   spread(key, value) %>% 
   filter(keep == 1)
 
-# Question 2
+#Question 2#
+
+preg <- tribble(
+  ~pregnant, ~male, ~female,
+  #--------/------/---------
+  "yes",        NA,      10,
+  "no",         20,      12
+)
+
+# `preg` needs to be gathered because it has values as variable names. The
+# variables in `preg` are `pregnant`, `gender`, and `count`.
+
 preg %>% 
   gather(`male`, `female`, key = "gender", value = "count")
 
-# Preg has values for variable name
+#Question 3#
 
-# Question 3
+tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
+  separate(x, c("one", "two", "three"))
 
 tibble(x = c("a,b,c", "d,e,f,g", "h,i,j")) %>% 
   separate(x, c("one", "two", "three"), extra = "merge")
 
-# Extra value, so you need to merge
+#Question 4#
 
-# Question 4
-# Remove tells R whether or not to eliminate the column being parsed. Might be good to keep to keep track
+# The `remove` argument determines whether R should remove or keep the original
+# column(s) being parsed. The default is to remove the column(s); however, it
+# might make sense to keep the original column(s) for troubleshooting purposes
+# or another operation in certain situations.
 
-# Question 5
+#question 5#
 who %>%
   gather(code, value, new_sp_m014:newrel_f65, na.rm = TRUE) %>% 
   mutate(code = gsub("newrel", "new_rel", code)) %>%
@@ -56,9 +70,8 @@ who %>%
   geom_point() + 
   geom_line()
 
-# The precipitous rises and falls are surprising
+#question 6#
 
-# Question 6
 flights %>%
   inner_join(weather, by = c("origin", "year", "month", "day", "hour")) %>%
   mutate(
@@ -74,4 +87,3 @@ flights %>%
   ggplot(aes(x = wind_speed, y = dep_delay)) +
   geom_smooth()
 
-# Delays are at their worst between 30-35
